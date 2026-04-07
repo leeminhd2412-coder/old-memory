@@ -28,6 +28,14 @@
         }
         .safe-bg.hidden { opacity: 0; }
 
+        /* MINI PRELOADER (NEW) */
+        .media-loader {
+            position: absolute; top: 20px; right: 20px; z-index: 90;
+            width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.2);
+            border-top-color: #ff9a8b; border-radius: 50%;
+            animation: spin 1s linear infinite; display: none;
+        }
+
         /* MULTIPLE MEDIA LAYERS */
         .scene-image, .scene-video {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
@@ -73,32 +81,15 @@
         @keyframes capcutFade { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
 
         /* ================= EFFECTS OVERLAYS ================= */
-        .film-overlay {
-            position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.5s;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-        }
+        .film-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.5s; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
         .film-overlay.active { opacity: 0.35; animation: noiseAnim 0.2s steps(2) infinite; }
-        .film-overlay.active::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.4) 10.2%, transparent 10.4%, transparent 60%, rgba(255,255,255,0.3) 60.1%, transparent 60.5%, transparent 85%, rgba(255,255,255,0.5) 85.2%, transparent 85.6%);
-            background-size: 200% 100%; animation: scratchAnim 0.6s infinite linear; mix-blend-mode: overlay;
-        }
+        .film-overlay.active::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.4) 10.2%, transparent 10.4%, transparent 60%, rgba(255,255,255,0.3) 60.1%, transparent 60.5%, transparent 85%, rgba(255,255,255,0.5) 85.2%, transparent 85.6%); background-size: 200% 100%; animation: scratchAnim 0.6s infinite linear; mix-blend-mode: overlay; }
         @keyframes noiseAnim { 0% { background-position: 0 0; } 100% { background-position: 100% 100%; } }
         @keyframes scratchAnim { 0% { background-position: 0 0; opacity: 0.2;} 50% { background-position: 50% 0; opacity: 0.6;} 100% { background-position: 100% 0; opacity: 0.2;} }
 
         #eff-icons { position: absolute; inset: 0; z-index: 11; pointer-events: none; overflow: hidden; display: none; }
-        .floating-icon {
-            position: absolute; bottom: -50px; opacity: 0; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
-            animation: floatUpIcon linear forwards;
-        }
-        @keyframes floatUpIcon {
-            0% { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); }
-            10% { opacity: 0.8; transform: translateY(-10vh) translateX(10px) rotate(15deg) scale(1); }
-            50% { opacity: 0.6; transform: translateY(-50vh) translateX(-15px) rotate(-10deg) scale(1.2); }
-            90% { opacity: 0.8; transform: translateY(-90vh) translateX(10px) rotate(15deg) scale(1); }
-            100% { opacity: 0; transform: translateY(-110vh) translateX(-20px) rotate(-20deg) scale(0.8); }
-        }
+        .floating-icon { position: absolute; bottom: -50px; opacity: 0; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); animation: floatUpIcon linear forwards; }
+        @keyframes floatUpIcon { 0% { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); } 10% { opacity: 0.8; transform: translateY(-10vh) translateX(10px) rotate(15deg) scale(1); } 50% { opacity: 0.6; transform: translateY(-50vh) translateX(-15px) rotate(-10deg) scale(1.2); } 90% { opacity: 0.8; transform: translateY(-90vh) translateX(10px) rotate(15deg) scale(1); } 100% { opacity: 0; transform: translateY(-110vh) translateX(-20px) rotate(-20deg) scale(0.8); } }
 
         .lightleak-overlay { position: absolute; inset: 0; z-index: 12; pointer-events: none; opacity: 0; transition: opacity 0.5s; mix-blend-mode: screen; }
         .lightleak-overlay.active { opacity: 0.45; }
@@ -129,8 +120,7 @@
 
         .loading-overlay { position: absolute; inset: 0; background: #000; z-index: 100; display: flex; justify-content: center; align-items: center; color: #ff9a8b; font-size: 1.2rem; flex-direction: column; transition: opacity 0.5s;}
         .gentle-heart { position: fixed; font-size: 28px; color: rgba(255, 105, 180, 0.9); pointer-events: none; opacity: 0; z-index: 100; animation: gentle-float 4s ease-out forwards; text-shadow: 0 0 10px rgba(255, 105, 180, 0.5); }
-        @keyframes gentle-float { 0% { opacity: 0; transform: translateY(0) scale(0.5) rotate(-10deg); } 20% { opacity: 1; transform: translateY(-60px) scale(1.2) rotate(15deg); } 80% { opacity: 0.8; transform: translateY(-250px) scale(1) rotate(-5deg); } 100% { opacity: 0; transform: translateY(-350px) scale(1.3) rotate(10deg); } }
-
+        
         /* ON THIS DAY TOAST */
         .memory-toast { position: absolute; top: -100px; left: 5%; right: 5%; background: rgba(164, 80, 139, 0.9); backdrop-filter: blur(10px); color: white; padding: 15px; border-radius: 12px; z-index: 80; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: top 0.5s cubic-bezier(0.25, 1, 0.5, 1); display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.2); }
         .memory-toast.show { top: 20px; }
@@ -219,7 +209,7 @@
         .diary-mood-stars { display: flex; gap: 10px; align-items: center; font-size: 1.1rem;}
         .diary-text { font-size: 1rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; margin-bottom: 12px; color: #eee;}
         .diary-task-summary { font-size: 0.85rem; color: #ff9a8b; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(164, 80, 139, 0.3);}
-
+        
         #calendar-view-container { display: none; flex-direction: column; gap: 15px; }
         .calendar-header { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; }
         .cal-nav-btn { background: none; border: none; color: #ff9a8b; font-size: 1.2rem; cursor: pointer; padding: 0 10px;}
@@ -257,6 +247,7 @@
 </head>
 <body>
 
+    <div class="media-loader" id="media-loader"></div>
     <div class="loading-overlay" id="loading-screen">
         <div class="spin-icon" style="font-size: 40px; margin-bottom: 15px;">⏳</div>
         <div id="loading-text">Loading Memories...</div>
@@ -429,7 +420,7 @@
 
     <script>
         // ==================== APP SETTINGS & PRESETS ====================
-        const SETTINGS_KEY = 'lynh_settings_v18';
+        const SETTINGS_KEY = 'lynh_settings_v19';
         
         let playlist =[
             "chang trai bat tu.mp3", "die for u.mp3", "gió.mp3", "ngam phao hoa.mp3", 
@@ -444,12 +435,6 @@
             randomAllowed:['fade', 'zoom', 'scale-down', 'slide-up', 'flip'],
             activeSongs:[], customPresets:[], volume: 100
         };
-
-        // Fallback for older saves mapping dust to icons
-        if(appSettings.dust !== undefined) {
-            appSettings.icons = appSettings.dust;
-            delete appSettings.dust;
-        }
 
         function initSettings() {
             renderPresetDropdown();
@@ -596,21 +581,22 @@
             startAutoPlayTimer(); startIconSpawner();
         }
 
-        // ==================== ADVANCED MEDIA PROBING ====================
+        // ==================== ADVANCED FETCH PROBING (FIX GITHUB LAG) ====================
         let validImageFiles =[], validVideoFiles =[];
         let imageBag =[], videoBag =[], quoteBag =[];
         
-        async function checkFile(url) {
+        // Dùng Fetch API để kiểm tra file có thực sự tồn tại trên máy chủ (Github) không, chống tải trang 404
+        async function checkFileExists(url) {
             try {
                 let res = await fetch(url, { method: 'HEAD' });
-                return res.status === 200;
+                return res.ok;
             } catch(e) { return false; }
         }
 
         async function probeMedia(prefix, exts) {
             let validFiles =[]; let misses = 0; let i = 1;
             while(misses < 3) {
-                let checks = exts.map(ext => checkFile(encodeURI(`${prefix} (${i}).${ext}`)).then(ok => ok ? ext : null));
+                let checks = exts.map(ext => checkFileExists(encodeURI(`${prefix} (${i}).${ext}`)).then(ok => ok ? ext : null));
                 let results = await Promise.all(checks);
                 let foundExt = results.find(ext => ext !== null);
                 
@@ -626,7 +612,7 @@
         async function probeMusic() {
             let misses = 0; let i = 1;
             while(misses < 3) {
-                let checks =['mp3', 'mp4', 'm4a'].map(ext => checkFile(encodeURI(`music (${i}).${ext}`)).then(ok => ok ? ext : null));
+                let checks =['mp3', 'mp4', 'm4a'].map(ext => checkFileExists(encodeURI(`music (${i}).${ext}`)).then(ok => ok ? ext : null));
                 let results = await Promise.all(checks);
                 let foundExt = results.find(ext => ext !== null);
                 
@@ -661,14 +647,12 @@
 
         // ==================== QUOTES LOGIC ====================
         const quotes =[
-            // Original Quotes
             "Em gửi nụ hôn theo gió, mong anh cảm nhận được.", "Hãy sống thật rực rỡ, để khi gặp lại, em nhận ra anh ngay.",
             "Anh à, tình yêu này sẽ không bao giờ là quá khứ. Em yêu anh!", "Em vẫn ở đây, chỉ là… không còn đau nữa thôi.",
             "Có những đêm em nhìn thấy anh ngồi im lặng – em chỉ ước mình có thể siết tay anh thật chặt.",
             "Đừng nhớ em bằng nước mắt, hãy nhớ em bằng nụ cười mà anh từng khiến em có.",
             "Mỗi lần gió khẽ lay tóc anh, là em đang chạm vào anh đó – nhẹ thôi, kẻo anh buồn.",
             "Cảm ơn vì đã luôn ôm em vào lòng, ngay cả khi em chẳng còn sức để nói một lời.",
-            // 10 Quotes For Minh
             "Minh à, dẫu em không thể nắm tay anh đi tiếp, nhưng mỗi đoạn đường anh qua đều có ánh mắt em dõi theo.",
             "Xin lỗi vì đã để anh lại một mình với những ký ức. Nhưng Minh này, anh phải hứa với em là sẽ sống thật hạnh phúc nhé.",
             "Hứa với em, đừng để bóng tối của sự mất mát che khuất đi nụ cười ấm áp mà em yêu nhất ở anh, Minh nhé.",
@@ -679,7 +663,6 @@
             "Em tự hào lắm vì được làm người yêu của anh. Minh của em luôn là người đàn ông tuyệt vời nhất, kiên nhẫn nhất với em.",
             "Anh đừng giấu nước mắt vào trong. Cứ khóc nếu thấy mệt, rồi ngày mai lại mạnh mẽ bước tiếp, vì có em bảo vệ Minh rồi.",
             "Cảm ơn anh vì đã đến, đã yêu thương và bao dung cho một đứa con gái nhiều tì vết như em. Yêu Minh, thương anh vô cùng.",
-            // 10 Additional New Quotes
             "Minh có nhớ cái nắm tay đầu tiên không? Tay anh ấm lắm, ấm đến mức em mang theo cả hơi ấm ấy đến tận bây giờ.",
             "Này anh người yêu ơi, dù không được ăn những món Minh nấu nữa, nhưng em vẫn nhớ mãi hương vị tình yêu anh dành cho em.",
             "Anh đừng có mà lười biếng đấy nhé! Phải hoàn thành hết to-do list rồi em mới cho điểm 5 sao, nhớ chưa Minh?",
@@ -689,7 +672,17 @@
             "Em ở đây bình yên lắm, không còn đau đớn gì nữa. Minh ở đó cũng phải sống thật vui vẻ, để em yên tâm nghe không?",
             "Lúc nào mệt mỏi với cuộc đời, anh cứ mở điện thoại lên nhìn em một chút. Lynh của Minh lúc nào cũng đứng về phía anh.",
             "Cứ mỗi lần anh bật bài hát chúng mình thích, là em lại được ngồi cạnh anh nghe chung. Minh đừng tắt nhạc vội nhé.",
-            "Thời gian có thể làm phai mờ nhiều thứ, nhưng tình yêu em gửi lại cho Minh thì ngàn năm sau vẫn sáng lấp lánh như thế này."
+            "Thời gian có thể làm phai mờ nhiều thứ, nhưng tình yêu em gửi lại cho Minh thì ngàn năm sau vẫn sáng lấp lánh như thế này.",
+            "Minh ơiii, em mỏi chân rồi, cõng em đi! Nhớ anh quá đi mất thôi...",
+            "Hôm nay trời lạnh lắm, Minh không ôm em là em dỗi đấy nhé! Phạt anh thơm em 10 cái!",
+            "Anh lại mải làm việc quên em rồi đúng không? Phạt anh tối nay phải hát ru em ngủ!",
+            "Này chàng trai ngốc, anh có biết là cứ 5 phút em lại nhớ anh một lần không hả? Đền cho em đi!",
+            "Em chả thèm chơi với Minh nữa đâu... Ơ kìa, chưa dỗ người ta mà đã định đi à? Quay lại ôm em mau!",
+            "Nếu tình yêu của em dành cho Minh là một món ăn, chắc chắn nó sẽ là bún đậu mắm tôm... vì nó rất mặn mòi và hơi bốc mùi mắm một tí hihi!",
+            "Anh ơi, em vừa đi khám bác sĩ. Bác sĩ bảo em bị bệnh nang y... Nang y trong lòng ngực anh á =)))",
+            "Này Minh, anh có biết vì sao mặt em hay tròn xoe không? Vì trong đầu em lúc nào cũng chứa đầy anh đấy, nặng quá phồng cả má lên rồi!",
+            "Báo cảnh sát đi Minh ơi! Có một kẻ siêu đáng yêu, siêu lanh lợi vừa đánh cắp mất trái tim anh rồi, là em nè hehee!",
+            "Anh cứ bảo em béo... Đâu có, em chỉ đang phóng to sự đáng yêu của mình lên để Minh nhìn cho rõ thôi mờ!"
         ];
 
         function getNextQuote() {
@@ -724,8 +717,10 @@
             if (isUnlocked) applyUnlockState(); checkMemoryReminder();
         };
 
-        // ==================== AUTO-PLAY & TRANSITIONS ====================
+        // ==================== AUTO-PLAY & PRELOADING TRANSITIONS ====================
         let autoPlayTimer;
+        let isTransitioning = false; // Ngăn bấm đúp liên tục khi đang tải
+        
         function startAutoPlayTimer() { clearTimeout(autoPlayTimer); if (appSettings.autoPlay && isUnlocked && feedMode === 'image') autoPlayTimer = setTimeout(nextFeedItem, appSettings.autoPlaySpeed); }
         function setupVideoLoopState() { vid1.loop = !appSettings.autoPlay; vid2.loop = !appSettings.autoPlay; }
         vid1.onended = () => { if (appSettings.autoPlay && feedMode === 'video') nextFeedItem(); };
@@ -739,24 +734,61 @@
             nextFeedItem();
         });
 
-        function nextFeedItem() {
-            startAutoPlayTimer(); let transClass = getTransitionClass();
-            let newSrc = (feedMode === 'image') ? getNextFromBag('image') : getNextFromBag('video'); let filterCls = `filter-${appSettings.filter}`;
+        // CORE FIX: Tải ngầm ảnh/video xong mới cho phép chuyển cảnh
+        async function nextFeedItem() {
+            if(isTransitioning) return;
+            isTransitioning = true;
+            startAutoPlayTimer(); 
+            
+            let transClass = getTransitionClass();
+            let newSrc = (feedMode === 'image') ? getNextFromBag('image') : getNextFromBag('video'); 
+            let filterCls = `filter-${appSettings.filter}`;
+
+            // Hiện loader xoay tròn nhỏ góc phải
+            document.getElementById('media-loader').style.display = 'block';
+
+            // PRELOAD THE MEDIA
+            await new Promise((resolve) => {
+                // Tối đa chờ 6s nếu mạng quá yếu
+                let fallbackTimer = setTimeout(resolve, 6000); 
+                let finish = () => { clearTimeout(fallbackTimer); resolve(); };
+                
+                if (feedMode === 'image') {
+                    if(validImageFiles.length === 0) { finish(); return; }
+                    inactiveImg.onload = finish; inactiveImg.onerror = finish; inactiveImg.src = newSrc;
+                } else {
+                    if(validVideoFiles.length === 0) { finish(); return; }
+                    inactiveVid.onloadeddata = finish; inactiveVid.onerror = finish; 
+                    inactiveVid.src = newSrc; inactiveVid.load();
+                }
+            });
+
+            document.getElementById('media-loader').style.display = 'none';
+
+            // CHẠY HIỆU ỨNG SAU KHI TẢI XONG
             if (transClass === 'anim-capcut') {
                 transitionLayer.classList.remove('do-transition'); void transitionLayer.offsetWidth; transitionLayer.classList.add('do-transition');
-                let delay = parseFloat(appSettings.speed) * 1000 / 2; setTimeout(() => swapMediaDirect(newSrc, 'anim-kenburns', filterCls), delay);
-            } else { swapMediaDirect(newSrc, transClass, filterCls); }
+                let delay = parseFloat(appSettings.speed) * 1000 / 2; 
+                setTimeout(() => {
+                    swapMediaDirect('anim-kenburns', filterCls);
+                    setTimeout(() => isTransitioning = false, delay);
+                }, delay);
+            } else { 
+                swapMediaDirect(transClass, filterCls); 
+                setTimeout(() => isTransitioning = false, parseFloat(appSettings.speed) * 1000);
+            }
         }
 
-        function swapMediaDirect(newSrc, animClass, filterCls) {
+        // Bỏ biến newSrc vì đã được nhúng trong lúc Preload
+        function swapMediaDirect(animClass, filterCls) {
             quoteText.style.animation = 'none'; void quoteText.offsetWidth; quoteText.textContent = `"${getNextQuote()}"`; quoteText.style.animation = 'fadeInUp 1s ease forwards';
             if (feedMode === 'image') {
                 if(validImageFiles.length === 0) return;
-                inactiveImg.src = newSrc; inactiveImg.className = `scene-image active ${animClass} ${filterCls}`; activeImg.className = `scene-image outgoing ${filterCls}`; 
+                inactiveImg.className = `scene-image active ${animClass} ${filterCls}`; activeImg.className = `scene-image outgoing ${filterCls}`; 
                 let temp = activeImg; activeImg = inactiveImg; inactiveImg = temp;
             } else {
                 if(validVideoFiles.length === 0) return;
-                inactiveVid.src = newSrc; inactiveVid.className = `scene-video active ${animClass} ${filterCls}`; activeVid.className = `scene-video outgoing ${filterCls}`; activeVid.muted = true; 
+                inactiveVid.className = `scene-video active ${animClass} ${filterCls}`; activeVid.className = `scene-video outgoing ${filterCls}`; activeVid.muted = true; 
                 if (videoAudioMode === 'original') { inactiveVid.muted = false; audioPlayer.muted = true; } else { inactiveVid.muted = true; }
                 inactiveVid.play().catch(e => {}); let temp = activeVid; activeVid = inactiveVid; inactiveVid = temp;
             }
