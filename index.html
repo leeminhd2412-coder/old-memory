@@ -73,8 +73,6 @@
         @keyframes capcutFade { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
 
         /* ================= EFFECTS OVERLAYS ================= */
-        
-        /* 1. FILM SCRATCHES */
         .film-overlay {
             position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.5s;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -89,10 +87,7 @@
         @keyframes noiseAnim { 0% { background-position: 0 0; } 100% { background-position: 100% 100%; } }
         @keyframes scratchAnim { 0% { background-position: 0 0; opacity: 0.2;} 50% { background-position: 50% 0; opacity: 0.6;} 100% { background-position: 100% 0; opacity: 0.2;} }
 
-        /* 2. FLOATING ICONS (Replacing Dust) */
-        #eff-icons {
-            position: absolute; inset: 0; z-index: 11; pointer-events: none; overflow: hidden; display: none;
-        }
+        #eff-icons { position: absolute; inset: 0; z-index: 11; pointer-events: none; overflow: hidden; display: none; }
         .floating-icon {
             position: absolute; bottom: -50px; opacity: 0; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
             animation: floatUpIcon linear forwards;
@@ -105,7 +100,6 @@
             100% { opacity: 0; transform: translateY(-110vh) translateX(-20px) rotate(-20deg) scale(0.8); }
         }
 
-        /* 3. LIGHT LEAKS */
         .lightleak-overlay { position: absolute; inset: 0; z-index: 12; pointer-events: none; opacity: 0; transition: opacity 0.5s; mix-blend-mode: screen; }
         .lightleak-overlay.active { opacity: 0.45; }
         .lightleak-overlay::before, .lightleak-overlay::after { content: ''; position: absolute; width: 250%; height: 250%; top: -75%; left: -75%; }
@@ -114,7 +108,6 @@
         @keyframes leakAnim { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(10%, 10%) rotate(10deg); } }
         @keyframes leakAnim2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, 5%) scale(1.1); } }
 
-        /* 4. VIGNETTE */
         .vignette-overlay { position: absolute; inset: 0; z-index: 13; pointer-events: none; opacity: 0; transition: opacity 0.5s; box-shadow: inset 0 0 150px rgba(0,0,0,0.9); }
         .vignette-overlay.active { opacity: 1; }
 
@@ -226,7 +219,7 @@
         .diary-mood-stars { display: flex; gap: 10px; align-items: center; font-size: 1.1rem;}
         .diary-text { font-size: 1rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; margin-bottom: 12px; color: #eee;}
         .diary-task-summary { font-size: 0.85rem; color: #ff9a8b; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(164, 80, 139, 0.3);}
-        
+
         #calendar-view-container { display: none; flex-direction: column; gap: 15px; }
         .calendar-header { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; }
         .cal-nav-btn { background: none; border: none; color: #ff9a8b; font-size: 1.2rem; cursor: pointer; padding: 0 10px;}
@@ -596,7 +589,8 @@
             document.getElementById('safe-bg').classList.add('hidden'); document.getElementById('btn-lock').style.display = 'none';
             document.querySelectorAll('.locked').forEach(el => { if (el.id === 'btn-vid-audio') return; if (el.id === 'quote-container' && !appSettings.quotes) return; el.style.display = (el.tagName === 'DIV' && el.classList.contains('ui-icon-wrapper')) ? 'flex' : 'block'; el.classList.remove('locked'); });
             if (validImageFiles.length > 0 && document.getElementById('img1').src === window.location.href) { 
-                activeImg.src = getNextFromBag('image'); activeImg.className = `scene-image active filter-${appSettings.filter}`; 
+                activeImg.src = getNextFromBag('image'); 
+                activeImg.className = `scene-image active filter-${appSettings.filter}`; 
                 quoteText.textContent = `"${getNextQuote()}"`; 
             }
             startAutoPlayTimer(); startIconSpawner();
@@ -606,38 +600,50 @@
         let validImageFiles =[], validVideoFiles =[];
         let imageBag =[], videoBag =[], quoteBag =[];
         
-        async function probeMedia(prefix, exts, isVideo) {
+        async function checkFile(url) {
+            try {
+                let res = await fetch(url, { method: 'HEAD' });
+                return res.status === 200;
+            } catch(e) { return false; }
+        }
+
+        async function probeMedia(prefix, exts) {
             let validFiles =[]; let misses = 0; let i = 1;
             while(misses < 3) {
-                let foundExt = null;
-                for (let ext of exts) {
-                    let exists = await new Promise(resolve => {
-                        let el = document.createElement(isVideo ? 'video' : 'img');
-                        if(isVideo) { el.preload = "metadata"; el.onloadeddata = () => resolve(true); } else { el.onload = () => resolve(true); }
-                        el.onerror = () => resolve(false); el.src = `${prefix} (${i}).${ext}`;
-                    });
-                    if (exists) { foundExt = ext; break; }
-                }
-                if(foundExt) { validFiles.push(`${prefix} (${i}).${foundExt}`); misses = 0; } else { misses++; }
+                let checks = exts.map(ext => checkFile(encodeURI(`${prefix} (${i}).${ext}`)).then(ok => ok ? ext : null));
+                let results = await Promise.all(checks);
+                let foundExt = results.find(ext => ext !== null);
+                
+                if(foundExt) { 
+                    validFiles.push(`${prefix} (${i}).${foundExt}`); 
+                    misses = 0; 
+                } else { misses++; }
                 i++;
-            } return validFiles;
+            } 
+            return validFiles;
         }
 
         async function probeMusic() {
             let misses = 0; let i = 1;
             while(misses < 3) {
-                let found = false;
-                for (let ext of['mp3', 'mp4', 'm4a']) {
-                    let exists = await new Promise(resolve => { let el = document.createElement('audio'); el.onloadedmetadata = () => resolve(true); el.onerror = () => resolve(false); el.src = `music (${i}).${ext}`; });
-                    if(exists) { let songStr = `music (${i}).${ext}`; if(!playlist.includes(songStr)) playlist.push(songStr); found = true; break; }
-                }
-                if(found) misses = 0; else misses++; i++;
+                let checks =['mp3', 'mp4', 'm4a'].map(ext => checkFile(encodeURI(`music (${i}).${ext}`)).then(ok => ok ? ext : null));
+                let results = await Promise.all(checks);
+                let foundExt = results.find(ext => ext !== null);
+                
+                if(foundExt) { 
+                    let songStr = `music (${i}).${foundExt}`; 
+                    if(!playlist.includes(songStr)) playlist.push(songStr); 
+                    misses = 0; 
+                } else { misses++; }
+                i++;
             }
-            if (!appSettings.activeSongs || appSettings.activeSongs.length === 0) { appSettings.activeSongs = playlist.map((_, idx) => idx); }
+            if (!appSettings.activeSongs || appSettings.activeSongs.length === 0) { 
+                appSettings.activeSongs = playlist.map((_, idx) => idx); 
+            }
             renderPlaylistUI();
         }
 
-        function shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] =[array[j], array[i]]; } }
+        function shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] = [array[j], array[i]]; } }
 
         function getNextFromBag(type) {
             let bag = type === 'image' ? imageBag : videoBag; 
@@ -655,14 +661,14 @@
 
         // ==================== QUOTES LOGIC ====================
         const quotes =[
-            // 8 Original Quotes
+            // Original Quotes
             "Em gửi nụ hôn theo gió, mong anh cảm nhận được.", "Hãy sống thật rực rỡ, để khi gặp lại, em nhận ra anh ngay.",
             "Anh à, tình yêu này sẽ không bao giờ là quá khứ. Em yêu anh!", "Em vẫn ở đây, chỉ là… không còn đau nữa thôi.",
             "Có những đêm em nhìn thấy anh ngồi im lặng – em chỉ ước mình có thể siết tay anh thật chặt.",
             "Đừng nhớ em bằng nước mắt, hãy nhớ em bằng nụ cười mà anh từng khiến em có.",
             "Mỗi lần gió khẽ lay tóc anh, là em đang chạm vào anh đó – nhẹ thôi, kẻo anh buồn.",
             "Cảm ơn vì đã luôn ôm em vào lòng, ngay cả khi em chẳng còn sức để nói một lời.",
-            // 10 Quotes Tình cảm cũ
+            // 10 Quotes For Minh
             "Minh à, dẫu em không thể nắm tay anh đi tiếp, nhưng mỗi đoạn đường anh qua đều có ánh mắt em dõi theo.",
             "Xin lỗi vì đã để anh lại một mình với những ký ức. Nhưng Minh này, anh phải hứa với em là sẽ sống thật hạnh phúc nhé.",
             "Hứa với em, đừng để bóng tối của sự mất mát che khuất đi nụ cười ấm áp mà em yêu nhất ở anh, Minh nhé.",
@@ -673,18 +679,17 @@
             "Em tự hào lắm vì được làm người yêu của anh. Minh của em luôn là người đàn ông tuyệt vời nhất, kiên nhẫn nhất với em.",
             "Anh đừng giấu nước mắt vào trong. Cứ khóc nếu thấy mệt, rồi ngày mai lại mạnh mẽ bước tiếp, vì có em bảo vệ Minh rồi.",
             "Cảm ơn anh vì đã đến, đã yêu thương và bao dung cho một đứa con gái nhiều tì vết như em. Yêu Minh, thương anh vô cùng.",
-            // 5 Quotes Nũng nịu (New)
-            "Minh ơiii, em mỏi chân rồi, cõng em đi! Nhớ anh quá đi mất thôi...",
-            "Hôm nay trời lạnh lắm, Minh không ôm em là em dỗi đấy nhé! Phạt anh thơm em 10 cái!",
-            "Anh lại mải làm việc quên em rồi đúng không? Phạt anh tối nay phải hát ru em ngủ!",
-            "Này chàng trai ngốc, anh có biết là cứ 5 phút em lại nhớ anh một lần không hả? Đền cho em đi!",
-            "Em chả thèm chơi với Minh nữa đâu... Ơ kìa, chưa dỗ người ta mà đã định đi à? Quay lại ôm em mau!",
-            // 5 Quotes Nhí nhảnh hài hước (New)
-            "Nếu tình yêu của em dành cho Minh là một món ăn, chắc chắn nó sẽ là bún đậu mắm tôm... vì nó rất mặn mòi và hơi bốc mùi mắm một tí hihi!",
-            "Anh ơi, em vừa đi khám bác sĩ. Bác sĩ bảo em bị bệnh nang y... Nang y trong lòng ngực anh á =)))",
-            "Này Minh, anh có biết vì sao mặt em hay tròn xoe không? Vì trong đầu em lúc nào cũng chứa đầy anh đấy, nặng quá phồng cả má lên rồi!",
-            "Báo cảnh sát đi Minh ơi! Có một kẻ siêu đáng yêu, siêu lanh lợi vừa đánh cắp mất trái tim anh rồi, là em nè hehee!",
-            "Anh cứ bảo em béo... Đâu có, em chỉ đang phóng to sự đáng yêu của mình lên để Minh nhìn cho rõ thôi mờ!"
+            // 10 Additional New Quotes
+            "Minh có nhớ cái nắm tay đầu tiên không? Tay anh ấm lắm, ấm đến mức em mang theo cả hơi ấm ấy đến tận bây giờ.",
+            "Này anh người yêu ơi, dù không được ăn những món Minh nấu nữa, nhưng em vẫn nhớ mãi hương vị tình yêu anh dành cho em.",
+            "Anh đừng có mà lười biếng đấy nhé! Phải hoàn thành hết to-do list rồi em mới cho điểm 5 sao, nhớ chưa Minh?",
+            "Nhiều lúc em chỉ muốn gõ đầu anh một cái vì tội hay giấu giếm nỗi buồn. Minh à, anh có quyền được yếu đuối mà.",
+            "Nếu một ngày mưa anh cảm thấy cô đơn, hãy đưa tay ra hứng mưa nhé. Là em đang chạm vào tay anh đó.",
+            "Cái tính bướng bỉnh của em chỉ có mình Minh chịu nổi thôi. Thế nên em chả muốn nhường anh cho ai khác đâu, nhưng em mong anh đừng cô đơn mãi.",
+            "Em ở đây bình yên lắm, không còn đau đớn gì nữa. Minh ở đó cũng phải sống thật vui vẻ, để em yên tâm nghe không?",
+            "Lúc nào mệt mỏi với cuộc đời, anh cứ mở điện thoại lên nhìn em một chút. Lynh của Minh lúc nào cũng đứng về phía anh.",
+            "Cứ mỗi lần anh bật bài hát chúng mình thích, là em lại được ngồi cạnh anh nghe chung. Minh đừng tắt nhạc vội nhé.",
+            "Thời gian có thể làm phai mờ nhiều thứ, nhưng tình yêu em gửi lại cho Minh thì ngàn năm sau vẫn sáng lấp lánh như thế này."
         ];
 
         function getNextQuote() {
@@ -703,11 +708,19 @@
 
         window.onload = async () => {
             initSettings();
-            validImageFiles = await probeMedia('am',['jpg', 'jpeg', 'png', 'webp', 'JPG', 'PNG', 'JPEG'], false); 
-            validVideoFiles = await probeMedia('vam',['mp4', 'mov', 'webm', 'MP4', 'MOV'], true);
+            
+            document.getElementById('loading-text').innerText = "Finding photos...";
+            validImageFiles = await probeMedia('am',['jpg', 'jpeg', 'png', 'webp', 'JPG', 'PNG', 'JPEG']); 
+            
+            document.getElementById('loading-text').innerText = "Finding videos...";
+            validVideoFiles = await probeMedia('vam',['mp4', 'mov', 'webm', 'MP4', 'MOV']);
+            
+            document.getElementById('loading-text').innerText = "Tuning music...";
             await probeMusic();
             
-            document.getElementById('loading-screen').style.opacity = '0'; setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 500);
+            document.getElementById('loading-screen').style.opacity = '0'; 
+            setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 500);
+            
             if (isUnlocked) applyUnlockState(); checkMemoryReminder();
         };
 
