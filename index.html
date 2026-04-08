@@ -14,12 +14,7 @@
             height: 100vh; overflow: hidden; font-family: 'Quicksand', sans-serif; -webkit-tap-highlight-color: transparent;
         }
 
-        .tiktok-container {
-            width: 100%; max-width: 450px; height: 100vh; max-height: 900px;
-            position: relative; overflow: hidden; background-color: #0a0a0a;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.05); cursor: pointer;
-        }
-
+        .tiktok-container { width: 100%; max-width: 450px; height: 100vh; max-height: 900px; position: relative; overflow: hidden; background-color: #0a0a0a; box-shadow: 0 0 50px rgba(255, 255, 255, 0.05); cursor: pointer; }
         .safe-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); z-index: -1; opacity: 1; transition: opacity 1s ease; }
         .safe-bg.hidden { opacity: 0; }
 
@@ -28,138 +23,72 @@
         .scene-image.outgoing, .scene-video.outgoing { z-index: 1; opacity: 1; }
         .scene-image.active, .scene-video.active { z-index: 2; opacity: 1; }
 
-        /* FILTERS & TRANSITIONS */
-        .filter-none { filter: none !important; }
-        .filter-vintage { filter: sepia(30%) contrast(110%) brightness(90%) !important; }
-        .filter-bw { filter: grayscale(100%) contrast(120%) brightness(85%) !important; }
-        .filter-cinematic { filter: contrast(125%) saturate(130%) brightness(85%) !important; }
-        .filter-dreamy { filter: contrast(105%) brightness(115%) saturate(85%) blur(0.5px) !important; }
+        .filter-none { filter: none !important; } .filter-vintage { filter: sepia(30%) contrast(110%) brightness(90%) !important; } .filter-bw { filter: grayscale(100%) contrast(120%) brightness(85%) !important; } .filter-cinematic { filter: contrast(125%) saturate(130%) brightness(85%) !important; } .filter-dreamy { filter: contrast(105%) brightness(115%) saturate(85%) blur(0.5px) !important; }
 
-        .anim-fade { animation: fadeIn var(--trans-speed) ease forwards; }
-        .anim-zoom { animation: zoomIn var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .anim-scale-down { animation: scaleDown var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .anim-slide-up { animation: slideUp var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .anim-slide-down { animation: slideDown var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .anim-slide-left { animation: slideLeft var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .anim-slide-right { animation: slideRight var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .anim-blur { animation: blurFade var(--trans-speed) ease forwards; }
-        .anim-flip { animation: flipTrans var(--trans-speed) ease forwards; }
-        .anim-kenburns { animation: kenBurns 15s linear forwards; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes zoomIn { from { opacity: 0; transform: scale(1.2); } to { opacity: 1; transform: scale(1); } }
-        @keyframes scaleDown { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        @keyframes slideUp { from { opacity: 1; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideDown { from { opacity: 1; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideLeft { from { opacity: 1; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideRight { from { opacity: 1; transform: translateX(-100%); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes blurFade { from { opacity: 0; filter: blur(20px); } to { opacity: 1; filter: blur(0); } }
-        @keyframes flipTrans { 0% { transform: perspective(400px) rotateY(90deg); opacity: 0; } 100% { transform: perspective(400px) rotateY(0deg); opacity: 1; } }
-        @keyframes kenBurns { 0% { opacity: 1; transform: scale(1) translate(0, 0); } 100% { opacity: 1; transform: scale(1.15) translate(-2%, 2%); } }
+        .anim-fade { animation: fadeIn var(--trans-speed) ease forwards; } .anim-zoom { animation: zoomIn var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; } .anim-scale-down { animation: scaleDown var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; } .anim-slide-up { animation: slideUp var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; } .anim-slide-down { animation: slideDown var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; } .anim-slide-left { animation: slideLeft var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; } .anim-slide-right { animation: slideRight var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards; } .anim-blur { animation: blurFade var(--trans-speed) ease forwards; } .anim-flip { animation: flipTrans var(--trans-speed) ease forwards; } .anim-kenburns { animation: kenBurns 15s linear forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes zoomIn { from { opacity: 0; transform: scale(1.2); } to { opacity: 1; transform: scale(1); } } @keyframes scaleDown { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } } @keyframes slideUp { from { opacity: 1; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } } @keyframes slideDown { from { opacity: 1; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } } @keyframes slideLeft { from { opacity: 1; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } } @keyframes slideRight { from { opacity: 1; transform: translateX(-100%); } to { opacity: 1; transform: translateX(0); } } @keyframes blurFade { from { opacity: 0; filter: blur(20px); } to { opacity: 1; filter: blur(0); } } @keyframes flipTrans { 0% { transform: perspective(400px) rotateY(90deg); opacity: 0; } 100% { transform: perspective(400px) rotateY(0deg); opacity: 1; } } @keyframes kenBurns { 0% { opacity: 1; transform: scale(1) translate(0, 0); } 100% { opacity: 1; transform: scale(1.15) translate(-2%, 2%); } }
 
-        .transition-layer { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 5; }
-        .do-transition { animation: capcutFade var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1); }
-        @keyframes capcutFade { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+        .transition-layer { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 5; } .do-transition { animation: capcutFade var(--trans-speed) cubic-bezier(0.25, 1, 0.5, 1); } @keyframes capcutFade { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
 
-        /* OVERLAYS */
-        .film-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.5s; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
-        .film-overlay.active { opacity: 0.35; animation: noiseAnim 0.2s steps(2) infinite; }
-        .film-overlay.active::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.4) 10.2%, transparent 10.4%, transparent 60%, rgba(255,255,255,0.3) 60.1%, transparent 60.5%, transparent 85%, rgba(255,255,255,0.5) 85.2%, transparent 85.6%); background-size: 200% 100%; animation: scratchAnim 0.6s infinite linear; mix-blend-mode: overlay; }
-        @keyframes noiseAnim { 0% { background-position: 0 0; } 100% { background-position: 100% 100%; } }
-        @keyframes scratchAnim { 0% { background-position: 0 0; opacity: 0.2;} 50% { background-position: 50% 0; opacity: 0.6;} 100% { background-position: 100% 0; opacity: 0.2;} }
+        .film-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.5s; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; } .film-overlay.active { opacity: 0.35; animation: noiseAnim 0.2s steps(2) infinite; } .film-overlay.active::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.4) 10.2%, transparent 10.4%, transparent 60%, rgba(255,255,255,0.3) 60.1%, transparent 60.5%, transparent 85%, rgba(255,255,255,0.5) 85.2%, transparent 85.6%); background-size: 200% 100%; animation: scratchAnim 0.6s infinite linear; mix-blend-mode: overlay; } @keyframes noiseAnim { 0% { background-position: 0 0; } 100% { background-position: 100% 100%; } } @keyframes scratchAnim { 0% { background-position: 0 0; opacity: 0.2;} 50% { background-position: 50% 0; opacity: 0.6;} 100% { background-position: 100% 0; opacity: 0.2;} }
+        #eff-icons { position: absolute; inset: 0; z-index: 11; pointer-events: none; overflow: hidden; display: none; } .floating-icon { position: absolute; bottom: -50px; opacity: 0; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); animation: floatUpIcon linear forwards; } @keyframes floatUpIcon { 0% { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); } 10% { opacity: 0.8; transform: translateY(-10vh) translateX(10px) rotate(15deg) scale(1); } 50% { opacity: 0.6; transform: translateY(-50vh) translateX(-15px) rotate(-10deg) scale(1.2); } 90% { opacity: 0.8; transform: translateY(-90vh) translateX(10px) rotate(15deg) scale(1); } 100% { opacity: 0; transform: translateY(-110vh) translateX(-20px) rotate(-20deg) scale(0.8); } }
+        .lightleak-overlay { position: absolute; inset: 0; z-index: 12; pointer-events: none; opacity: 0; transition: opacity 0.5s; mix-blend-mode: screen; } .lightleak-overlay.active { opacity: 0.45; } .lightleak-overlay::before, .lightleak-overlay::after { content: ''; position: absolute; width: 250%; height: 250%; top: -75%; left: -75%; } .lightleak-overlay::before { background: radial-gradient(circle at 50% 50%, rgba(255, 120, 100, 0.4), transparent 60%); animation: leakAnim 8s infinite alternate ease-in-out; } .lightleak-overlay::after { background: radial-gradient(circle at 80% 20%, rgba(255, 200, 120, 0.3), transparent 50%); animation: leakAnim2 11s infinite alternate ease-in-out; } @keyframes leakAnim { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(10%, 10%) rotate(10deg); } } @keyframes leakAnim2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, 5%) scale(1.1); } }
+        .vignette-overlay { position: absolute; inset: 0; z-index: 13; pointer-events: none; opacity: 0; transition: opacity 0.5s; box-shadow: inset 0 0 150px rgba(0,0,0,0.9); } .vignette-overlay.active { opacity: 1; }
 
-        #eff-icons { position: absolute; inset: 0; z-index: 11; pointer-events: none; overflow: hidden; display: none; }
-        .floating-icon { position: absolute; bottom: -50px; opacity: 0; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); animation: floatUpIcon linear forwards; }
-        @keyframes floatUpIcon { 0% { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); } 10% { opacity: 0.8; transform: translateY(-10vh) translateX(10px) rotate(15deg) scale(1); } 50% { opacity: 0.6; transform: translateY(-50vh) translateX(-15px) rotate(-10deg) scale(1.2); } 90% { opacity: 0.8; transform: translateY(-90vh) translateX(10px) rotate(15deg) scale(1); } 100% { opacity: 0; transform: translateY(-110vh) translateX(-20px) rotate(-20deg) scale(0.8); } }
+        .quote-container { position: absolute; bottom: 12%; left: 5%; right: 18%; z-index: 20; text-align: left; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); pointer-events: none; transition: opacity 0.5s ease; } .quote-container.locked, .quote-container.hidden-by-setting { opacity: 0 !important; } .quote-text { color: #fff; font-size: 1.15rem; font-weight: 500; line-height: 1.5; margin-bottom: 8px; font-style: italic; } .quote-author { color: #ff9a8b; font-family: 'Dancing Script', cursive; font-size: 1.5rem; }
 
-        .lightleak-overlay { position: absolute; inset: 0; z-index: 12; pointer-events: none; opacity: 0; transition: opacity 0.5s; mix-blend-mode: screen; }
-        .lightleak-overlay.active { opacity: 0.45; }
-        .lightleak-overlay::before, .lightleak-overlay::after { content: ''; position: absolute; width: 250%; height: 250%; top: -75%; left: -75%; }
-        .lightleak-overlay::before { background: radial-gradient(circle at 50% 50%, rgba(255, 120, 100, 0.4), transparent 60%); animation: leakAnim 8s infinite alternate ease-in-out; }
-        .lightleak-overlay::after { background: radial-gradient(circle at 80% 20%, rgba(255, 200, 120, 0.3), transparent 50%); animation: leakAnim2 11s infinite alternate ease-in-out; }
-        @keyframes leakAnim { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(10%, 10%) rotate(10deg); } }
-        @keyframes leakAnim2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, 5%) scale(1.1); } }
+        .ui-elements { position: absolute; right: 15px; bottom: 12%; z-index: 30; display: flex; flex-direction: column; gap: 20px; align-items: center; user-select: none; -webkit-user-select: none;} .ui-icon-wrapper { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; transition: transform 0.2s;} .ui-icon { color: white; font-size: 28px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); } .ui-icon-wrapper:active { transform: scale(0.8); } .ui-icon-wrapper:active .ui-icon { color: #ff9a8b; } .ui-label { color: white; font-size: 11px; text-shadow: 1px 1px 2px #000; font-weight: 600;} .spin-icon { animation: spin 4s linear infinite; } @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        .vignette-overlay { position: absolute; inset: 0; z-index: 13; pointer-events: none; opacity: 0; transition: opacity 0.5s; box-shadow: inset 0 0 150px rgba(0,0,0,0.9); }
-        .vignette-overlay.active { opacity: 1; }
-
-        /* QUOTES OVERLAY */
-        .quote-container { position: absolute; bottom: 12%; left: 5%; right: 18%; z-index: 20; text-align: left; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); pointer-events: none; transition: opacity 0.5s ease; }
-        .quote-container.locked, .quote-container.hidden-by-setting { opacity: 0 !important; }
-        .quote-text { color: #fff; font-size: 1.15rem; font-weight: 500; line-height: 1.5; margin-bottom: 8px; font-style: italic; }
-        .quote-author { color: #ff9a8b; font-family: 'Dancing Script', cursive; font-size: 1.5rem; }
-
-        /* ICONS */
-        .ui-elements { position: absolute; right: 15px; bottom: 12%; z-index: 30; display: flex; flex-direction: column; gap: 20px; align-items: center; user-select: none; -webkit-user-select: none;}
-        .ui-icon-wrapper { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; transition: transform 0.2s;}
-        .ui-icon { color: white; font-size: 28px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-        .ui-icon-wrapper:active { transform: scale(0.8); }
-        .ui-icon-wrapper:active .ui-icon { color: #ff9a8b; }
-        .ui-label { color: white; font-size: 11px; text-shadow: 1px 1px 2px #000; font-weight: 600;}
-        
+        /* LOADING & TOAST */
         .media-loader { position: absolute; top: 20px; right: 20px; z-index: 90; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.2); border-top-color: #ff9a8b; border-radius: 50%; animation: spin 1s linear infinite; display: none; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
         .loading-overlay { position: absolute; inset: 0; background: #000; z-index: 100; display: flex; justify-content: center; align-items: center; color: #ff9a8b; font-size: 1.2rem; flex-direction: column; transition: opacity 0.5s;}
         .gentle-heart { position: fixed; font-size: 28px; color: rgba(255, 105, 180, 0.9); pointer-events: none; opacity: 0; z-index: 100; animation: gentle-float 4s ease-out forwards; text-shadow: 0 0 10px rgba(255, 105, 180, 0.5); }
-        @keyframes gentle-float { 0% { opacity: 0; transform: translateY(0) scale(0.5) rotate(-10deg); } 20% { opacity: 1; transform: translateY(-60px) scale(1.2) rotate(15deg); } 80% { opacity: 0.8; transform: translateY(-250px) scale(1) rotate(-5deg); } 100% { opacity: 0; transform: translateY(-350px) scale(1.3) rotate(10deg); } }
+        .memory-toast { position: absolute; top: -100px; left: 5%; right: 5%; background: rgba(164, 80, 139, 0.9); backdrop-filter: blur(10px); color: white; padding: 15px; border-radius: 12px; z-index: 80; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: top 0.5s cubic-bezier(0.25, 1, 0.5, 1); display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.2); } .memory-toast.show { top: 20px; } .toast-icon { font-size: 24px; } .toast-content { flex-grow: 1; } .toast-title { font-weight: bold; font-size: 0.9rem; margin-bottom: 3px; color: #ffd1dc;} .toast-desc { font-size: 0.85rem; line-height: 1.4; opacity: 0.9; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
         /* PANELS COMMON */
-        .bottom-panel { position: absolute; bottom: -100%; left: 0; width: 100%; height: 88%; background: rgba(15, 15, 15, 0.98); border-radius: 20px 20px 0 0; transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 50; padding: 20px; box-sizing: border-box; color: white; display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.1); cursor: default; }
-        .bottom-panel.active { bottom: 0; }
-        .panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px; flex-shrink: 0;}
-        .panel-title { font-size: 1.2rem; font-weight: 600; color: #ff9a8b; margin: 0; }
-        .close-btn { background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0; line-height: 1;}
-        .action-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; border-radius: 5px; padding: 6px 12px; font-size: 0.85rem; cursor: pointer; font-family: 'Quicksand';}
-        .action-btn.del { color: #ff4757; background: rgba(255, 71, 87, 0.15); }
+        .bottom-panel { position: absolute; bottom: -100%; left: 0; width: 100%; height: 88%; background: rgba(15, 15, 15, 0.98); border-radius: 20px 20px 0 0; transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 50; padding: 20px; box-sizing: border-box; color: white; display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.1); cursor: default; } .bottom-panel.active { bottom: 0; } .panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px; flex-shrink: 0;} .panel-title { font-size: 1.2rem; font-weight: 600; color: #ff9a8b; margin: 0; } .close-btn { background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0; line-height: 1;} .action-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; border-radius: 5px; padding: 6px 12px; font-size: 0.85rem; cursor: pointer; font-family: 'Quicksand';} .action-btn.del { color: #ff4757; background: rgba(255, 71, 87, 0.15); }
 
-        /* SETTINGS & DIARY (Minified CSS for space) */
-        .setting-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.1)}.setting-label{font-size:0.95rem;font-weight:500}.setting-desc{font-size:0.75rem;color:#aaa;margin-top:4px}.setting-control select{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);padding:8px 12px;border-radius:8px;font-family:'Quicksand';outline:none;width:100%}.setting-control select option{background:#111}.toggle-switch{position:relative;display:inline-block;width:44px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:rgba(255,255,255,0.2);transition:.4s;border-radius:34px}.slider:before{position:absolute;content:"";height:16px;width:16px;left:4px;bottom:4px;background-color:white;transition:.4s;border-radius:50%}input:checked+.slider{background-color:#a4508b}input:checked+.slider:before{transform:translateX(20px)}.preset-area{background:rgba(164,80,139,0.15);padding:12px;border-radius:10px;border:1px solid #a4508b;margin-bottom:10px}.preset-area .setting-row{border-bottom:none;padding:0;align-items:flex-start}.random-trans-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.trans-cb-label{font-size:0.8rem;background:rgba(255,255,255,0.1);padding:6px 10px;border-radius:6px;cursor:pointer;border:1px solid transparent;display:flex;align-items:center;gap:5px}.trans-cb-label:has(input:checked){background:rgba(164,80,139,0.3);border-color:#ff9a8b;color:white}.trans-cb-label input{display:none}.diary-tabs{display:flex;gap:10px;margin-bottom:15px}.diary-tab-btn{flex:1;background:rgba(255,255,255,0.1);border:none;color:white;padding:10px 0;border-radius:10px;cursor:pointer;font-family:'Quicksand';font-weight:600;transition:.2s;font-size:0.9rem}.diary-tab-btn.active{background:#a4508b;color:white}.tab-content{flex-grow:1;display:none;flex-direction:column;overflow-y:auto;overflow-x:hidden;padding-bottom:20px}.tab-content.active{display:flex}.tab-content::-webkit-scrollbar{width:4px}.tab-content::-webkit-scrollbar-thumb{background:#555;border-radius:10px}.mood-selector{display:flex;justify-content:space-between;margin-bottom:15px;background:rgba(255,255,255,0.03);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05)}.mood-btn{background:none;border:1px solid transparent;font-size:1.4rem;cursor:pointer;border-radius:5px;opacity:.4;transition:.2s}.mood-btn.selected{opacity:1;transform:scale(1.2);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.1)}#diary-input{width:100%;height:100px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:12px;border-radius:10px;font-family:'Quicksand';font-size:1rem;resize:none;outline:none;box-sizing:border-box;margin-bottom:15px;line-height:1.5}.todo-section{background:rgba(255,255,255,0.03);padding:15px;border-radius:10px;border:1px solid rgba(255,255,255,0.05)}.todo-header{font-size:0.95rem;color:#ff9a8b;margin-bottom:10px;font-weight:600;display:flex;justify-content:space-between}.add-task-area{display:flex;gap:5px;margin-bottom:10px}#task-input{flex-grow:1;background:rgba(255,255,255,0.1);border:none;color:white;padding:10px;border-radius:5px;font-family:'Quicksand';outline:none;font-size:0.9rem}#task-diff{background:rgba(255,255,255,0.1);border:none;color:white;border-radius:5px;padding:5px;font-family:'Quicksand';outline:none}#task-diff option{background:#111}#task-add-btn{background:#5f0a87;color:white;border:none;border-radius:5px;padding:0 15px;cursor:pointer;font-family:'Quicksand';font-weight:600}.paste-hint{font-size:0.75rem;color:#777;margin-bottom:15px;text-align:center;font-style:italic}#temp-task-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}.task-item{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.05);padding:10px;border-radius:8px;font-size:0.9rem}.task-item.done .task-name{text-decoration:line-through;color:#777}.task-left{display:flex;align-items:center;gap:10px;overflow:hidden}.task-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}.diff-badge{font-size:0.7rem;padding:3px 6px;border-radius:10px;font-weight:bold;text-transform:uppercase}.diff-easy{background:#2ecc71;color:#000}.diff-medium{background:#f1c40f;color:#000}.diff-hard{background:#e74c3c;color:#fff}.del-task-btn{background:none;border:none;color:#ff4757;font-size:1.2rem;cursor:pointer}.save-diary-btn{background:linear-gradient(135deg,#a4508b 0%,#5f0a87 100%);width:100%;padding:14px;border-radius:10px;color:white;font-weight:bold;font-size:1.1rem;border:none;cursor:pointer;margin-top:15px;font-family:'Quicksand'}.view-toggle-area{display:flex;background:rgba(255,255,255,0.05);border-radius:8px;margin-bottom:15px;overflow:hidden}.view-btn{flex:1;background:none;border:none;color:#aaa;padding:8px;font-family:'Quicksand';font-weight:600;cursor:pointer;transition:.2s}.view-btn.active{background:rgba(255,255,255,0.1);color:#fff}#list-view-container{display:block}.filter-area{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}#search-input{flex-grow:1;min-width:120px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:8px 12px;border-radius:8px;outline:none;font-family:'Quicksand'}#star-filter{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:8px;border-radius:8px;outline:none;font-family:'Quicksand'}.action-group{display:flex;gap:8px;width:100%}.export-btn,.import-btn{flex:1;background:rgba(46,204,113,0.2);color:#2ecc71;border:1px solid #2ecc71;padding:8px;border-radius:8px;cursor:pointer;font-family:'Quicksand';font-weight:600;text-align:center}.import-btn{background:rgba(52,152,219,0.2);color:#3498db;border-color:#3498db}#diary-entries-list{display:flex;flex-direction:column;gap:15px}.diary-card{background:rgba(255,255,255,0.05);border-radius:12px;padding:15px;border-left:4px solid #a4508b;border-top:1px solid rgba(255,255,255,0.05);box-shadow:0 4px 10px rgba(0,0,0,0.3)}.diary-card-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed rgba(255,255,255,0.15);padding-bottom:10px;margin-bottom:12px}.diary-date{font-size:0.85rem;color:#bbb;font-weight:600}.diary-mood-stars{display:flex;gap:10px;align-items:center;font-size:1.1rem}.diary-text{font-size:1rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin-bottom:12px;color:#eee}.diary-task-summary{font-size:0.85rem;color:#ff9a8b;background:rgba(0,0,0,0.3);padding:8px 12px;border-radius:8px;border:1px solid rgba(164,80,139,0.3)}.card-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}.card-btn{background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:5px;padding:6px 12px;font-size:0.85rem;cursor:pointer;font-family:'Quicksand'}.card-btn.del{color:#ff4757;background:rgba(255,71,87,0.15)}#calendar-view-container{display:none;flex-direction:column;gap:15px}.calendar-header{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.05);padding:10px;border-radius:8px}.cal-nav-btn{background:none;border:none;color:#ff9a8b;font-size:1.2rem;cursor:pointer;padding:0 10px}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}.cal-day-name{font-size:0.8rem;color:#aaa;margin-bottom:5px}.cal-day{position:relative;padding:10px 0;background:rgba(255,255,255,0.03);border-radius:6px;cursor:pointer;transition:.2s;font-size:0.95rem}.cal-day.empty{background:transparent;cursor:default}.cal-day.has-entry::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:5px;height:5px;background-color:#ff9a8b;border-radius:50%;box-shadow:0 0 5px #ff9a8b}.cal-day.selected{background:#5f0a87;color:white;border:1px solid #a4508b}#calendar-entries-preview{border-top:1px dashed rgba(255,255,255,0.2);padding-top:15px;display:flex;flex-direction:column;gap:10px}
-        .music-progress-container{margin-bottom:15px}.music-time{display:flex;justify-content:space-between;font-size:0.75rem;color:#aaa;margin-bottom:5px;font-family:monospace}.music-seek{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);outline:none;cursor:pointer}.music-seek::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:12px;height:12px;border-radius:50%;background:#ff9a8b;cursor:pointer}.volume-container{display:flex;align-items:center;gap:10px;margin-bottom:15px;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px}.volume-slider{flex-grow:1;-webkit-appearance:none;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);outline:none}.volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:white;cursor:pointer}.music-controls{display:flex;justify-content:center;gap:20px;align-items:center;margin-bottom:15px;background:rgba(255,255,255,0.05);padding:12px;border-radius:10px}.control-btn{background:none;border:none;color:white;font-size:1.3rem;cursor:pointer;opacity:0.6;transition:.2s;padding:0 5px}.control-btn.active{opacity:1;color:#ff9a8b}.playlist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}#playlist-ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:220px}.song-item{background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:8px;font-size:0.95rem;display:flex;justify-content:space-between;align-items:center;transition:.2s}.song-item.playing{background:rgba(164,80,139,0.3);border-left:3px solid #ff9a8b;font-weight:bold}.song-checkbox{width:18px;height:18px;cursor:pointer;accent-color:#a4508b}.song-name{flex-grow:1;margin-left:10px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-        
+        /* MINIFIED COMPONENT CSS */
+        .setting-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.1)}.setting-label{font-size:0.95rem;font-weight:500}.setting-desc{font-size:0.75rem;color:#aaa;margin-top:4px}.setting-control select,.setting-control input[type="password"]{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);padding:8px 12px;border-radius:8px;font-family:'Quicksand';outline:none;width:100%}.setting-control select option{background:#111}.toggle-switch{position:relative;display:inline-block;width:44px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:rgba(255,255,255,0.2);transition:.4s;border-radius:34px}.slider:before{position:absolute;content:"";height:16px;width:16px;left:4px;bottom:4px;background-color:white;transition:.4s;border-radius:50%}input:checked+.slider{background-color:#a4508b}input:checked+.slider:before{transform:translateX(20px)}.preset-area{background:rgba(164,80,139,0.15);padding:12px;border-radius:10px;border:1px solid #a4508b;margin-bottom:10px}.preset-area .setting-row{border-bottom:none;padding:0;align-items:flex-start}.random-trans-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.trans-cb-label{font-size:0.8rem;background:rgba(255,255,255,0.1);padding:6px 10px;border-radius:6px;cursor:pointer;border:1px solid transparent;display:flex;align-items:center;gap:5px}.trans-cb-label:has(input:checked){background:rgba(164,80,139,0.3);border-color:#ff9a8b;color:white}.trans-cb-label input{display:none}.diary-tabs{display:flex;gap:10px;margin-bottom:15px}.diary-tab-btn{flex:1;background:rgba(255,255,255,0.1);border:none;color:white;padding:10px 0;border-radius:10px;cursor:pointer;font-family:'Quicksand';font-weight:600;transition:.2s;font-size:0.9rem}.diary-tab-btn.active{background:#a4508b;color:white}.tab-content{flex-grow:1;display:none;flex-direction:column;overflow-y:auto;overflow-x:hidden;padding-bottom:20px}.tab-content.active{display:flex}.tab-content::-webkit-scrollbar{width:4px}.tab-content::-webkit-scrollbar-thumb{background:#555;border-radius:10px}.mood-selector{display:flex;justify-content:space-between;margin-bottom:15px;background:rgba(255,255,255,0.03);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05)}.mood-btn{background:none;border:1px solid transparent;font-size:1.4rem;cursor:pointer;border-radius:5px;opacity:.4;transition:.2s}.mood-btn.selected{opacity:1;transform:scale(1.2);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.1)}#diary-input{width:100%;height:100px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:12px;border-radius:10px;font-family:'Quicksand';font-size:1rem;resize:none;outline:none;box-sizing:border-box;margin-bottom:15px;line-height:1.5}.todo-section{background:rgba(255,255,255,0.03);padding:15px;border-radius:10px;border:1px solid rgba(255,255,255,0.05)}.todo-header{font-size:0.95rem;color:#ff9a8b;margin-bottom:10px;font-weight:600;display:flex;justify-content:space-between}.add-task-area{display:flex;gap:5px;margin-bottom:10px}#task-input{flex-grow:1;background:rgba(255,255,255,0.1);border:none;color:white;padding:10px;border-radius:5px;font-family:'Quicksand';outline:none;font-size:0.9rem}#task-diff{background:rgba(255,255,255,0.1);border:none;color:white;border-radius:5px;padding:5px;font-family:'Quicksand';outline:none}#task-diff option{background:#111}#task-add-btn{background:#5f0a87;color:white;border:none;border-radius:5px;padding:0 15px;cursor:pointer;font-family:'Quicksand';font-weight:600}.paste-hint{font-size:0.75rem;color:#777;margin-bottom:15px;text-align:center;font-style:italic}#temp-task-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}.task-item{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.05);padding:10px;border-radius:8px;font-size:0.9rem}.task-item.done .task-name{text-decoration:line-through;color:#777}.task-left{display:flex;align-items:center;gap:10px;overflow:hidden}.task-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}.diff-badge{font-size:0.7rem;padding:3px 6px;border-radius:10px;font-weight:bold;text-transform:uppercase}.diff-easy{background:#2ecc71;color:#000}.diff-medium{background:#f1c40f;color:#000}.diff-hard{background:#e74c3c;color:#fff}.del-task-btn{background:none;border:none;color:#ff4757;font-size:1.2rem;cursor:pointer}.save-diary-btn{background:linear-gradient(135deg,#a4508b 0%,#5f0a87 100%);width:100%;padding:14px;border-radius:10px;color:white;font-weight:bold;font-size:1.1rem;border:none;cursor:pointer;margin-top:15px;font-family:'Quicksand'}.view-toggle-area{display:flex;background:rgba(255,255,255,0.05);border-radius:8px;margin-bottom:15px;overflow:hidden}.view-btn{flex:1;background:none;border:none;color:#aaa;padding:8px;font-family:'Quicksand';font-weight:600;cursor:pointer;transition:.2s}.view-btn.active{background:rgba(255,255,255,0.1);color:#fff}#list-view-container{display:block}.filter-area{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}#search-input{flex-grow:1;min-width:120px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:8px 12px;border-radius:8px;outline:none;font-family:'Quicksand'}#star-filter{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:8px;border-radius:8px;outline:none;font-family:'Quicksand'}.action-group{display:flex;gap:8px;width:100%}.export-btn,.import-btn{flex:1;background:rgba(46,204,113,0.2);color:#2ecc71;border:1px solid #2ecc71;padding:8px;border-radius:8px;cursor:pointer;font-family:'Quicksand';font-weight:600;text-align:center}.import-btn{background:rgba(52,152,219,0.2);color:#3498db;border-color:#3498db}#diary-entries-list{display:flex;flex-direction:column;gap:15px}.diary-card{background:rgba(255,255,255,0.05);border-radius:12px;padding:15px;border-left:4px solid #a4508b;border-top:1px solid rgba(255,255,255,0.05);box-shadow:0 4px 10px rgba(0,0,0,0.3)}.diary-card-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed rgba(255,255,255,0.15);padding-bottom:10px;margin-bottom:12px}.diary-date{font-size:0.85rem;color:#bbb;font-weight:600}.diary-mood-stars{display:flex;gap:10px;align-items:center;font-size:1.1rem}.diary-text{font-size:1rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin-bottom:12px;color:#eee}.diary-task-summary{font-size:0.85rem;color:#ff9a8b;background:rgba(0,0,0,0.3);padding:8px 12px;border-radius:8px;border:1px solid rgba(164,80,139,0.3)}.card-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}.card-btn{background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:5px;padding:6px 12px;font-size:0.85rem;cursor:pointer;font-family:'Quicksand'}.card-btn.del{color:#ff4757;background:rgba(255,71,87,0.15)}#calendar-view-container{display:none;flex-direction:column;gap:15px}.calendar-header{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.05);padding:10px;border-radius:8px}.cal-nav-btn{background:none;border:none;color:#ff9a8b;font-size:1.2rem;cursor:pointer;padding:0 10px}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}.cal-day-name{font-size:0.8rem;color:#aaa;margin-bottom:5px}.cal-day{position:relative;padding:10px 0;background:rgba(255,255,255,0.03);border-radius:6px;cursor:pointer;transition:.2s;font-size:0.95rem}.cal-day.empty{background:transparent;cursor:default}.cal-day.has-entry::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:5px;height:5px;background-color:#ff9a8b;border-radius:50%;box-shadow:0 0 5px #ff9a8b}.cal-day.selected{background:#5f0a87;color:white;border:1px solid #a4508b}#calendar-entries-preview{border-top:1px dashed rgba(255,255,255,0.2);padding-top:15px;display:flex;flex-direction:column;gap:10px}
+        .now-playing-text{font-size:1.1rem;font-weight:600;text-align:center;color:#ff9a8b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:10px;font-family:'Dancing Script',cursive;letter-spacing:1px}.music-progress-container{margin-bottom:15px}.music-time{display:flex;justify-content:space-between;font-size:0.75rem;color:#aaa;margin-bottom:5px;font-family:monospace}.music-seek{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);outline:none;cursor:pointer}.music-seek::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:12px;height:12px;border-radius:50%;background:#ff9a8b;cursor:pointer}.volume-container{display:flex;align-items:center;gap:10px;margin-bottom:15px;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px}.volume-slider{flex-grow:1;-webkit-appearance:none;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);outline:none}.volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:white;cursor:pointer}.music-controls{display:flex;justify-content:center;gap:20px;align-items:center;margin-bottom:15px;background:rgba(255,255,255,0.05);padding:12px;border-radius:10px}.control-btn{background:none;border:none;color:white;font-size:1.3rem;cursor:pointer;opacity:0.6;transition:.2s;padding:0 5px}.control-btn.active{opacity:1;color:#ff9a8b}.playlist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}#playlist-ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:220px}.song-item{background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:8px;font-size:0.95rem;display:flex;justify-content:space-between;align-items:center;transition:.2s}.song-item.playing{background:rgba(164,80,139,0.3);border-left:3px solid #ff9a8b;font-weight:bold}.song-checkbox{width:18px;height:18px;cursor:pointer;accent-color:#a4508b}.song-name{flex-grow:1;margin-left:10px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
         /* CHAT PANEL (MESSENGER STYLE) */
         #chat-panel .tab-content { display: flex; flex-direction: column; height: 100%; overflow: hidden; padding-bottom: 0;}
         .chat-header { display: flex; align-items: center; gap: 10px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 15px; }
         .chat-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #ff9a8b; }
         .chat-info { flex-grow: 1; }
         .chat-name { font-weight: bold; font-size: 1.1rem; color: #fff; }
-        .chat-status { font-size: 0.8rem; color: #2ecc71; } /* Online status */
+        .chat-status { font-size: 0.8rem; color: #2ecc71; }
         .chat-call-btn { background: none; border: none; color: #ff9a8b; font-size: 1.5rem; cursor: pointer; padding: 5px; }
         
         .chat-history { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 5px; margin-bottom: 15px; }
-        .chat-history::-webkit-scrollbar { width: 4px; }
-        .chat-history::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
+        .chat-history::-webkit-scrollbar { width: 4px; } .chat-history::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
         
-        .msg-bubble { max-width: 75%; padding: 10px 15px; border-radius: 18px; font-size: 0.95rem; line-height: 1.4; word-wrap: break-word; position: relative;}
+        .msg-bubble { max-width: 75%; padding: 10px 15px; border-radius: 18px; font-size: 0.95rem; line-height: 1.4; word-wrap: break-word; position: relative; animation: fadeIn 0.3s ease;}
         .msg-mine { background: #a4508b; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
         .msg-lynh { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 4px; }
         .msg-time { display: block; font-size: 0.7rem; opacity: 0.6; margin-top: 5px; text-align: right; }
+        .msg-typing { align-self: flex-start; background: transparent; padding: 5px; font-size: 0.8rem; color: #aaa; font-style: italic;}
         
-        .chat-input-area { display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 25px; }
+        .chat-input-area { display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 25px; margin-bottom: 10px;}
         .chat-input-area input { flex-grow: 1; background: transparent; border: none; color: white; outline: none; font-family: 'Quicksand'; font-size: 1rem; }
         .chat-send-btn { background: #ff9a8b; color: #000; border: none; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 1.2rem; }
 
         /* CALL SCREEN */
         #call-screen {
             position: fixed; inset: 0; background: rgba(15, 20, 25, 0.95); z-index: 999; display: none;
-            flex-direction: column; align-items: center; justify-content: space-around; padding: 40px 20px;
-            backdrop-filter: blur(20px);
+            flex-direction: column; align-items: center; justify-content: space-around; padding: 40px 20px; backdrop-filter: blur(20px);
         }
         .call-top { text-align: center; }
         .call-avatar-wrapper { position: relative; margin-bottom: 20px; }
         .call-avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ff9a8b; z-index: 2; position: relative;}
-        .call-ripple {
-            position: absolute; inset: 0; border-radius: 50%; border: 2px solid #ff9a8b;
-            animation: ripple 2s linear infinite; z-index: 1;
-        }
+        .call-ripple { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #ff9a8b; animation: ripple 2s linear infinite; z-index: 1; }
         @keyframes ripple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
-        
         .call-name { font-size: 1.8rem; font-weight: 600; color: white; margin-bottom: 5px; }
         .call-status-text { font-size: 1rem; color: #aaa; }
-        
         .call-actions { display: flex; gap: 40px; }
         .call-btn { width: 60px; height: 60px; border-radius: 50%; border: none; font-size: 1.5rem; color: white; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
-        .btn-end { background: #ff4757; }
-        .btn-mute { background: rgba(255,255,255,0.2); }
+        .btn-end { background: #ff4757; } .btn-mute { background: rgba(255,255,255,0.2); }
 
     </style>
 </head>
@@ -176,7 +105,6 @@
         <div class="call-top">
             <div class="call-avatar-wrapper">
                 <div class="call-ripple" id="call-ripple"></div>
-                <!-- Dùng tạm 1 ảnh ngẫu nhiên làm avatar gọi điện -->
                 <img src="" class="call-avatar" id="call-avatar-img"> 
             </div>
             <div class="call-name">Lynh Angel 💖</div>
@@ -215,11 +143,7 @@
             <div class="ui-icon-wrapper" id="btn-lock" onclick="unlockApp(event)"><div class="ui-icon">🗝️</div><div class="ui-label">Unlock</div></div>
             <div class="ui-icon-wrapper locked" id="btn-heart" onclick="spawnHeart(event)" style="display:none;"><div class="ui-icon">❤️</div><div class="ui-label" id="heart-count">Love</div></div>
             
-            <!-- NEW CHAT ICON -->
-            <div class="ui-icon-wrapper locked" onclick="openPanel('chat-panel', event)" style="display:none;">
-                <div class="ui-icon">💬</div>
-                <div class="ui-label">Chat</div>
-            </div>
+            <div class="ui-icon-wrapper locked" onclick="openPanel('chat-panel', event)" style="display:none;"><div class="ui-icon">💬</div><div class="ui-label">Chat</div></div>
 
             <div class="ui-icon-wrapper" onclick="openPanel('diary-panel', event)"><div class="ui-icon">📖</div><div class="ui-label">Diary</div></div>
             <div class="ui-icon-wrapper locked" id="btn-feed-mode" onclick="toggleFeedMode(event)" style="display: none;"><div class="ui-icon">🎬</div><div class="ui-label">Watch</div></div>
@@ -228,23 +152,16 @@
             <div class="ui-icon-wrapper" onclick="openPanel('settings-panel', event)"><div class="ui-icon">⚙️</div><div class="ui-label">Settings</div></div>
         </div>
         
-        <!-- CHAT PANEL (MESSENGER STYLE) -->
+        <!-- CHAT PANEL -->
         <div class="bottom-panel" id="chat-panel" onclick="event.stopPropagation()">
             <div class="tab-content active">
                 <div class="chat-header">
                     <img src="" id="chat-header-avatar" class="chat-avatar">
-                    <div class="chat-info">
-                        <div class="chat-name">Lynh Angel 💖</div>
-                        <div class="chat-status">Active now</div>
-                    </div>
+                    <div class="chat-info"><div class="chat-name">Lynh Angel 💖</div><div class="chat-status">Active now</div></div>
                     <button class="chat-call-btn" onclick="startVoiceCall()">📞</button>
                     <button class="close-btn" style="font-size: 24px; color: #fff;" onclick="closePanels()">×</button>
                 </div>
-                
-                <div class="chat-history" id="chat-history">
-                    <!-- Chat bubbles injected here -->
-                </div>
-
+                <div class="chat-history" id="chat-history"></div>
                 <div class="chat-input-area">
                     <input type="text" id="chat-input-msg" placeholder="Message Lynh..." onkeypress="handleChatEnter(event)">
                     <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
@@ -252,23 +169,39 @@
             </div>
         </div>
 
-        <!-- SETTINGS PANEL (Minified HTML for space) -->
+        <!-- SETTINGS PANEL -->
         <div class="bottom-panel" id="settings-panel" onclick="event.stopPropagation()">
             <div class="panel-header"><h3 class="panel-title">Settings</h3><button class="close-btn" onclick="closePanels()">×</button></div>
             <div style="overflow-y: auto; padding-right: 5px; padding-bottom: 20px;">
-                <div class="preset-area"><div class="setting-row"><div><div class="setting-label">Mood Preset</div><div class="setting-desc" style="color:#ffd1dc">Auto-configure visual style.</div></div><div class="setting-control" style="display:flex; flex-direction:column; gap:8px;"><select id="set-preset" onchange="applyPreset(this.value)"><option value="custom">Custom</option><option value="hoainiem">🎞️ Hoài Niệm (Reel)</option><option value="mongmo">🎐 Tương Tư (Daydream)</option><option value="suy">🥀 Suy (Nostalgic)</option><option value="vui">✨ Vui (Joyful)</option><option value="chill">☕ Chill (Classic)</option><optgroup label="Your Presets" id="custom-preset-group"></optgroup></select><div style="display:flex; gap:5px; justify-content:flex-end;"><button onclick="saveCustomPreset()" class="action-btn" style="font-size:0.75rem; padding:4px 8px;">+ Save</button><button id="btn-del-preset" onclick="deleteCustomPreset()" class="action-btn del" style="font-size:0.75rem; padding:4px 8px; display:none;">🗑️ Del</button></div></div></div></div>
-                <div class="setting-row"><div><div class="setting-label">Auto-play feed</div><div class="setting-desc">Auto skip media.</div></div><label class="toggle-switch"><input type="checkbox" id="set-autoplay" onchange="markCustomSettings()"><span class="slider"></span></label></div>
+                <div class="preset-area"><div class="setting-row"><div><div class="setting-label">Mood Preset</div></div><div class="setting-control" style="display:flex; flex-direction:column; gap:8px;"><select id="set-preset" onchange="applyPreset(this.value)"><option value="custom">Custom</option><option value="hoainiem">🎞️ Hoài Niệm</option><option value="mongmo">🎐 Tương Tư</option><option value="suy">🥀 Suy</option><option value="vui">✨ Vui</option><option value="chill">☕ Chill</option><optgroup label="Your Presets" id="custom-preset-group"></optgroup></select><div style="display:flex; gap:5px; justify-content:flex-end;"><button onclick="saveCustomPreset()" class="action-btn" style="font-size:0.75rem; padding:4px 8px;">+ Save</button><button id="btn-del-preset" onclick="deleteCustomPreset()" class="action-btn del" style="font-size:0.75rem; padding:4px 8px; display:none;">🗑️ Del</button></div></div></div></div>
+                <div class="setting-row"><div><div class="setting-label">Auto-play feed</div></div><label class="toggle-switch"><input type="checkbox" id="set-autoplay" onchange="markCustomSettings()"><span class="slider"></span></label></div>
                 <div class="setting-row"><div><div class="setting-label">Auto-play Duration</div></div><div class="setting-control"><select id="set-autoplay-speed" onchange="markCustomSettings()"><option value="5000">5 seconds</option><option value="10000">10 seconds</option><option value="15000">15 seconds</option><option value="30000">30 seconds</option></select></div></div>
                 <div class="setting-row"><div><div class="setting-label">Show Quotes</div></div><label class="toggle-switch"><input type="checkbox" id="set-quotes" onchange="markCustomSettings()"><span class="slider"></span></label></div>
                 <div class="setting-row"><div><div class="setting-label">Color Filter</div></div><div class="setting-control"><select id="set-filter" onchange="markCustomSettings()"><option value="none">Normal</option><option value="vintage">Vintage</option><option value="bw">B&W</option><option value="cinematic">Cinematic</option><option value="dreamy">Dreamy</option></select></div></div>
                 <div class="setting-row"><div><div class="setting-label">Transition Speed</div></div><div class="setting-control"><select id="set-speed" onchange="markCustomSettings()"><option value="0.2s">Flash (0.2s)</option><option value="0.4s">Fast (0.4s)</option><option value="0.7s">Normal (0.7s)</option><option value="1.2s">Slow (1.2s)</option></select></div></div>
                 <div class="setting-row" style="border-bottom:none; padding-bottom:0;"><div><div class="setting-label">Transition Style</div></div><div class="setting-control"><select id="set-transition" onchange="updateRandomCbDisplay(); markCustomSettings();"><option value="capcut">Original Flash</option><option value="fade">Smooth Fade</option><option value="zoom">Zoom In</option><option value="scale-down">Scale Down</option><option value="slide-up">Slide Up</option><option value="slide-down">Slide Down</option><option value="slide-left">Slide Left</option><option value="slide-right">Slide Right</option><option value="blur">Blur Fade</option><option value="flip">3D Flip</option><option value="random">🎲 Randomize</option></select></div></div>
-                <div class="setting-row" id="random-trans-row" style="display: none; flex-direction: column; align-items: flex-start; padding-top: 0; padding-bottom: 15px;"><div class="setting-desc" style="margin-bottom: 8px;">Checked effects will be used in Random mode:</div><div class="random-trans-grid"><label class="trans-cb-label"><input type="checkbox" value="capcut" class="trans-cb" onchange="markCustomSettings()">Flash</label><label class="trans-cb-label"><input type="checkbox" value="fade" class="trans-cb" onchange="markCustomSettings()">Fade</label><label class="trans-cb-label"><input type="checkbox" value="zoom" class="trans-cb" onchange="markCustomSettings()">Zoom</label><label class="trans-cb-label"><input type="checkbox" value="scale-down" class="trans-cb" onchange="markCustomSettings()">Scale</label><label class="trans-cb-label"><input type="checkbox" value="slide-up" class="trans-cb" onchange="markCustomSettings()">Up</label><label class="trans-cb-label"><input type="checkbox" value="slide-down" class="trans-cb" onchange="markCustomSettings()">Down</label><label class="trans-cb-label"><input type="checkbox" value="slide-left" class="trans-cb" onchange="markCustomSettings()">Left</label><label class="trans-cb-label"><input type="checkbox" value="slide-right" class="trans-cb" onchange="markCustomSettings()">Right</label><label class="trans-cb-label"><input type="checkbox" value="blur" class="trans-cb" onchange="markCustomSettings()">Blur</label><label class="trans-cb-label"><input type="checkbox" value="flip" class="trans-cb" onchange="markCustomSettings()">Flip</label></div></div>
+                <div class="setting-row" id="random-trans-row" style="display: none; flex-direction: column; align-items: flex-start; padding-top: 0; padding-bottom: 15px;"><div class="random-trans-grid"><label class="trans-cb-label"><input type="checkbox" value="capcut" class="trans-cb" onchange="markCustomSettings()">Flash</label><label class="trans-cb-label"><input type="checkbox" value="fade" class="trans-cb" onchange="markCustomSettings()">Fade</label><label class="trans-cb-label"><input type="checkbox" value="zoom" class="trans-cb" onchange="markCustomSettings()">Zoom</label><label class="trans-cb-label"><input type="checkbox" value="scale-down" class="trans-cb" onchange="markCustomSettings()">Scale</label><label class="trans-cb-label"><input type="checkbox" value="slide-up" class="trans-cb" onchange="markCustomSettings()">Up</label><label class="trans-cb-label"><input type="checkbox" value="slide-down" class="trans-cb" onchange="markCustomSettings()">Down</label><label class="trans-cb-label"><input type="checkbox" value="slide-left" class="trans-cb" onchange="markCustomSettings()">Left</label><label class="trans-cb-label"><input type="checkbox" value="slide-right" class="trans-cb" onchange="markCustomSettings()">Right</label><label class="trans-cb-label"><input type="checkbox" value="blur" class="trans-cb" onchange="markCustomSettings()">Blur</label><label class="trans-cb-label"><input type="checkbox" value="flip" class="trans-cb" onchange="markCustomSettings()">Flip</label></div></div>
                 <div class="setting-row"><div><div class="setting-label">Film Scratches</div></div><label class="toggle-switch"><input type="checkbox" id="set-scratch" onchange="markCustomSettings()"><span class="slider"></span></label></div>
                 <div class="setting-row"><div><div class="setting-label">Floating Hearts/Sparkles</div></div><label class="toggle-switch"><input type="checkbox" id="set-icons" onchange="markCustomSettings()"><span class="slider"></span></label></div>
                 <div class="setting-row"><div><div class="setting-label">Light Leaks</div></div><label class="toggle-switch"><input type="checkbox" id="set-lightleak" onchange="markCustomSettings()"><span class="slider"></span></label></div>
                 <div class="setting-row"><div><div class="setting-label">Dark Vignette</div></div><label class="toggle-switch"><input type="checkbox" id="set-vignette" onchange="markCustomSettings()"><span class="slider"></span></label></div>
                 <div class="setting-row"><div><div class="setting-label">Memory Reminder</div></div><div class="setting-control"><select id="set-reminder" onchange="markCustomSettings()"><option value="none">Off</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select></div></div>
+                
+                <!-- NEW: AI SETTINGS -->
+                <div class="setting-row" style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+                    <div style="width: 100%;">
+                        <div class="setting-label" style="color: #ff9a8b;">🧠 Lynh AI (ChatGPT)</div>
+                        <div class="setting-desc" style="margin-bottom: 10px;">Enable real-time AI responses. (Leave blank to use local offline replies).</div>
+                        <div class="setting-control">
+                            <input type="password" id="set-api-key" placeholder="Paste OpenAI API Key here (sk-proj-...)" style="margin-bottom: 10px;" onchange="saveSettings()">
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="setting-label" style="font-size: 0.85rem;">Enable AI Lynh Chat</span>
+                            <label class="toggle-switch"><input type="checkbox" id="set-ai-enable" onchange="saveSettings()"><span class="slider"></span></label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -282,7 +215,6 @@
                 <div class="todo-section">
                     <div class="todo-header"><span>Today's Tasks</span> <span id="temp-star-preview"></span></div>
                     <div class="add-task-area"><input type="text" id="task-input" placeholder="Name - easy/medi/hard"><select id="task-diff"><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select><button id="task-add-btn" onclick="addTaskToTemp()">Add</button></div>
-                    <div class="paste-hint">💡 Tip: You can paste multiple tasks here</div>
                     <ul id="temp-task-list"></ul>
                 </div>
                 <button class="save-diary-btn" onclick="saveDiaryEntry()">Save Memory</button>
@@ -330,15 +262,18 @@
 
     <script>
         // ==================== APP SETTINGS & PRESETS ====================
-        const SETTINGS_KEY = 'lynh_settings_v19'; 
+        const SETTINGS_KEY = 'lynh_settings_v21'; 
         let playlist =["chang trai bat tu.mp3", "die for u.mp3", "gió.mp3", "ngam phao hoa.mp3", "nothing on me.mp3", "pastlives.mp3", "pcedy.mp3", "tinh yeu cham tre.mp3", "w2019.mp3", "xin dung noi.mp3", "truoc khi em ton tai.mp3", "am tham ben em.mp3", "day bien.mp3", "tinh ve.mp3", "text07.mp3"];
         
         let appSettings = JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {
             preset: 'custom', autoPlay: false, autoPlaySpeed: 10000, quotes: true, filter: 'vintage', 
             transition: 'capcut', speed: '0.7s', scratch: false, icons: false, lightleak: false, vignette: false, reminder: 'yearly',
             randomAllowed:['fade', 'zoom', 'scale-down', 'slide-up', 'flip'],
-            activeSongs:[], customPresets:[], volume: 100
+            activeSongs:[], customPresets:[], volume: 100,
+            apiKey: '', aiEnable: false
         };
+
+        if(appSettings.dust !== undefined) { appSettings.icons = appSettings.dust; delete appSettings.dust; }
 
         function initSettings() {
             renderPresetDropdown();
@@ -353,6 +288,8 @@
             document.getElementById('set-lightleak').checked = appSettings.lightleak;
             document.getElementById('set-vignette').checked = appSettings.vignette;
             document.getElementById('set-reminder').value = appSettings.reminder;
+            document.getElementById('set-api-key').value = appSettings.apiKey || '';
+            document.getElementById('set-ai-enable').checked = appSettings.aiEnable || false;
             
             if(!appSettings.randomAllowed) appSettings.randomAllowed =['fade', 'zoom', 'slide-up'];
             document.querySelectorAll('.trans-cb').forEach(cb => { cb.checked = appSettings.randomAllowed.includes(cb.value); });
@@ -396,6 +333,7 @@
 
         function saveSettings() {
             appSettings.preset = document.getElementById('set-preset').value; appSettings.autoPlay = document.getElementById('set-autoplay').checked; appSettings.autoPlaySpeed = parseInt(document.getElementById('set-autoplay-speed').value) || 10000; appSettings.quotes = document.getElementById('set-quotes').checked; appSettings.filter = document.getElementById('set-filter').value; appSettings.transition = document.getElementById('set-transition').value; appSettings.speed = document.getElementById('set-speed').value; appSettings.scratch = document.getElementById('set-scratch').checked; appSettings.icons = document.getElementById('set-icons').checked; appSettings.lightleak = document.getElementById('set-lightleak').checked; appSettings.vignette = document.getElementById('set-vignette').checked; appSettings.reminder = document.getElementById('set-reminder').value;
+            appSettings.apiKey = document.getElementById('set-api-key').value.trim(); appSettings.aiEnable = document.getElementById('set-ai-enable').checked;
             appSettings.randomAllowed = Array.from(document.querySelectorAll('.trans-cb:checked')).map(cb => cb.value); if(appSettings.randomAllowed.length === 0) appSettings.randomAllowed = ['fade'];
             localStorage.setItem(SETTINGS_KEY, JSON.stringify(appSettings)); applySettingsState();
         }
@@ -415,7 +353,7 @@
             startAutoPlayTimer(); setupVideoLoopState(); startIconSpawner();
         }
 
-        // ==================== SECURITY & CHAT AI ====================
+        // ==================== SECURITY ====================
         const PASSWORD = 'tmxTL'; let isUnlocked = sessionStorage.getItem('lynh_unlocked') === 'true';
         function unlockApp(e) {
             e.stopPropagation(); if (isUnlocked) return; const pass = prompt("Enter the key to unlock memories:");
@@ -431,130 +369,29 @@
             });
             if (validImageFiles.length > 0 && document.getElementById('img1').src === window.location.href) { 
                 activeImg.src = getNextFromBag('image'); activeImg.className = `scene-image active filter-${appSettings.filter}`; quoteText.textContent = `"${getNextQuote()}"`; 
-                // Cập nhật avatar cho Chat và Call bằng ảnh đầu tiên
-                document.getElementById('chat-header-avatar').src = activeImg.src;
-                document.getElementById('call-avatar-img').src = activeImg.src;
+                document.getElementById('chat-header-avatar').src = activeImg.src; document.getElementById('call-avatar-img').src = activeImg.src;
             }
             startAutoPlayTimer(); startIconSpawner(); renderChatHistory();
         }
 
-        // ==================== CHAT & LOCAL AI SYSTEM ====================
-        const CHAT_KEY = 'lynh_chat_history';
-        
-        function openPanel(panelId, e) { e.stopPropagation(); closePanels(); document.getElementById(panelId).classList.add('active'); if(panelId === 'chat-panel') renderChatHistory(); }
-        function closePanels() { document.querySelectorAll('.bottom-panel').forEach(p => p.classList.remove('active')); }
-
-        function renderChatHistory() {
-            const chatList = document.getElementById('chat-history'); chatList.innerHTML = '';
-            let history = JSON.parse(localStorage.getItem(CHAT_KEY)) ||[];
-            
-            if(history.length === 0) {
-                chatList.innerHTML = '<div style="text-align:center; color:#777; margin-top:20px; font-size:0.85rem;">Cuộc trò chuyện được bảo mật cục bộ. Không ai thấy ngoài bạn.</div>';
-            } else {
-                history.forEach(msg => {
-                    let bubbleClass = msg.sender === 'minh' ? 'msg-mine' : 'msg-lynh';
-                    chatList.innerHTML += `<div class="msg-bubble ${bubbleClass}">${msg.text}<span class="msg-time">${msg.time}</span></div>`;
-                });
-            }
-            chatList.scrollTop = chatList.scrollHeight; // Cuộn xuống cuối
-        }
-
-        function handleChatEnter(e) { if(e.key === 'Enter') sendChatMessage(); }
-
-        function sendChatMessage() {
-            const input = document.getElementById('chat-input-msg'); const text = input.value.trim();
-            if(!text) return;
-            
-            let history = JSON.parse(localStorage.getItem(CHAT_KEY)) ||[];
-            const timeStr = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
-            
-            // Save Minh's message
-            history.push({ sender: 'minh', text: text, time: timeStr });
-            localStorage.setItem(CHAT_KEY, JSON.stringify(history));
-            input.value = ''; renderChatHistory();
-
-            // Trigger Local AI Reply
-            setTimeout(() => { lynhAutoReply(text); }, 1500 + Math.random() * 2000); // Trễ 1.5s - 3.5s cho chân thật
-        }
-
-        function lynhAutoReply(userText) {
-            let history = JSON.parse(localStorage.getItem(CHAT_KEY)) ||[];
-            const timeStr = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
-            
-            let reply = "";
-            let textLower = userText.toLowerCase();
-
-            // Simple Rule-based Emotion AI
-            if (textLower.includes('nhớ') || textLower.includes('miss')) {
-                const replies =["Em cũng nhớ Minh nhiều lắm. Ôm anh một cái thật chặt nhé! 💖", "Ngốc ạ, em vẫn ở đây, trong tim anh mà. Không được khóc đâu đấy!", "Nhớ thì tối nay phải mơ thấy em đấy nhé!"];
-                reply = replies[Math.floor(Math.random() * replies.length)];
-            } else if (textLower.includes('buồn') || textLower.includes('mệt') || textLower.includes('chán')) {
-                const replies =["Minh của em mệt rồi à? Lại đây em thương nào...", "Mọi chuyện rồi sẽ ổn thôi anh. Em luôn tin tưởng chàng trai của em mà!", "Đừng buồn nữa, thấy Minh buồn là em xót ruột lắm đấy. Nhìn lên trời đi, em đang cười với anh nè."];
-                reply = replies[Math.floor(Math.random() * replies.length)];
-            } else if (textLower.includes('yêu') || textLower.includes('love')) {
-                reply = "Em cũng yêu Minh, yêu hơn cả bản thân mình. Mãi mãi là như thế. 💕";
-            } else if (textLower.includes('chào') || textLower.includes('hi ')) {
-                reply = "Chào người yêu của em! Hôm nay của anh thế nào?";
-            } else {
-                const defaults =["Anh kể tiếp đi, em vẫn đang nghe đây.", "Minh ngoan nhé, em lúc nào cũng tự hào về anh.", "Thương anh người yêu của em vất vả rồi.", "Chỉ cần là Minh, thì em luôn ở đây."];
-                reply = defaults[Math.floor(Math.random() * defaults.length)];
-            }
-
-            history.push({ sender: 'lynh', text: reply, time: timeStr });
-            localStorage.setItem(CHAT_KEY, JSON.stringify(history));
-            renderChatHistory();
-        }
-
-        // ==================== VOICE CALL SYSTEM ====================
-        let callTimerInterval;
-        let callSeconds = 0;
-
-        function startVoiceCall() {
-            closePanels();
-            document.getElementById('call-screen').style.display = 'flex';
-            document.getElementById('call-status').innerText = "Calling...";
-            document.getElementById('call-ripple').style.animation = 'ripple 2s linear infinite';
-            
-            // Giả lập nhấc máy sau 3 giây
-            setTimeout(() => {
-                if(document.getElementById('call-screen').style.display === 'flex') {
-                    document.getElementById('call-ripple').style.animation = 'none'; // Tắt gợn sóng
-                    callSeconds = 0;
-                    document.getElementById('call-status').innerText = "00:00";
-                    callTimerInterval = setInterval(() => {
-                        callSeconds++;
-                        let m = Math.floor(callSeconds / 60).toString().padStart(2, '0');
-                        let s = (callSeconds % 60).toString().padStart(2, '0');
-                        document.getElementById('call-status').innerText = `${m}:${s}`;
-                    }, 1000);
-                }
-            }, 3000);
-        }
-
-        function endVoiceCall() {
-            clearInterval(callTimerInterval);
-            document.getElementById('call-screen').style.display = 'none';
-            document.getElementById('call-status').innerText = "Call ended";
-        }
-
-
-        // ==================== ADVANCED FETCH PROBING ====================
+        // ==================== BACKGROUND FETCH PROBING (FIX LOADING LAG) ====================
         let validImageFiles =[], validVideoFiles =[]; let imageBag =[], videoBag =[], quoteBag =[];
         
         async function checkFileExists(url) { try { let res = await fetch(url, { method: 'HEAD' }); return res.ok; } catch(e) { return false; } }
 
-        async function probeMedia(prefix, exts) {
-            let validFiles =[]; let misses = 0; let i = 1;
-            while(misses < 3) {
+        // Chạy nền không block UI
+        async function backgroundProbeMedia(prefix, exts) {
+            let valid =[]; let misses = 0; let i = 1;
+            while(misses < 2) { // Rút ngắn misses để nhanh hơn
                 let checks = exts.map(ext => checkFileExists(encodeURI(`${prefix} (${i}).${ext}`)).then(ok => ok ? ext : null));
                 let results = await Promise.all(checks); let foundExt = results.find(ext => ext !== null);
-                if(foundExt) { validFiles.push(`${prefix} (${i}).${foundExt}`); misses = 0; } else { misses++; } i++;
-            } return validFiles;
+                if(foundExt) { valid.push(`${prefix} (${i}).${foundExt}`); misses = 0; } else { misses++; } i++;
+            } return valid;
         }
 
-        async function probeMusic() {
+        async function backgroundProbeMusic() {
             let misses = 0; let i = 1;
-            while(misses < 3) {
+            while(misses < 2) {
                 let checks =['mp3', 'mp4', 'm4a'].map(ext => checkFileExists(encodeURI(`music (${i}).${ext}`)).then(ok => ok ? ext : null));
                 let results = await Promise.all(checks); let foundExt = results.find(ext => ext !== null);
                 if(foundExt) { let songStr = `music (${i}).${foundExt}`; if(!playlist.includes(songStr)) playlist.push(songStr); misses = 0; } else { misses++; } i++;
@@ -582,13 +419,28 @@
         const quoteText = document.getElementById('current-quote'), transitionLayer = document.getElementById('transition-layer');
         let activeImg = img1, inactiveImg = img2; let activeVid = vid1, inactiveVid = vid2;
 
-        window.onload = async () => {
+        window.onload = () => {
             initSettings();
-            document.getElementById('loading-text').innerText = "Finding photos..."; validImageFiles = await probeMedia('am',['jpg', 'jpeg', 'png', 'webp', 'JPG', 'PNG', 'JPEG']); 
-            document.getElementById('loading-text').innerText = "Finding videos..."; validVideoFiles = await probeMedia('vam',['mp4', 'mov', 'webm', 'MP4', 'MOV']);
-            document.getElementById('loading-text').innerText = "Tuning music..."; await probeMusic();
-            document.getElementById('loading-screen').style.opacity = '0'; setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 500);
+            
+            // Giả định số 1 luôn có để app chạy ngay lập tức trong 0.5s
+            validImageFiles = ["am (1).jpg"];
+            validVideoFiles =["vam (1).mp4"];
+            
+            document.getElementById('loading-screen').style.opacity = '0'; 
+            setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 500);
+            
             if (isUnlocked) applyUnlockState(); checkMemoryReminder();
+
+            // Khởi chạy quét ngầm (Background Probing)
+            setTimeout(async () => {
+                let probedImgs = await backgroundProbeMedia('am',['jpg', 'jpeg', 'png', 'webp', 'JPG']);
+                if(probedImgs.length > 0) validImageFiles = probedImgs;
+                
+                let probedVids = await backgroundProbeMedia('vam',['mp4', 'mov', 'webm', 'MP4']);
+                if(probedVids.length > 0) validVideoFiles = probedVids;
+                
+                await backgroundProbeMusic();
+            }, 1000);
         };
 
         let isTransitioning = false; 
@@ -601,13 +453,17 @@
         async function nextFeedItem() {
             if(isTransitioning) return; isTransitioning = true; startAutoPlayTimer(); 
             let transClass = getTransitionClass(); let newSrc = (feedMode === 'image') ? getNextFromBag('image') : getNextFromBag('video'); let filterCls = `filter-${appSettings.filter}`;
+            
+            if(!newSrc) { isTransitioning = false; return; }
+
             document.getElementById('media-loader').style.display = 'block';
             await new Promise((resolve) => {
                 let fallbackTimer = setTimeout(resolve, 6000); let finish = () => { clearTimeout(fallbackTimer); resolve(); };
-                if (feedMode === 'image') { if(validImageFiles.length === 0) { finish(); return; } inactiveImg.onload = finish; inactiveImg.onerror = finish; inactiveImg.src = newSrc; } 
-                else { if(validVideoFiles.length === 0) { finish(); return; } inactiveVid.onloadeddata = finish; inactiveVid.onerror = finish; inactiveVid.src = newSrc; inactiveVid.load(); }
+                if (feedMode === 'image') { inactiveImg.onload = finish; inactiveImg.onerror = finish; inactiveImg.src = newSrc; } 
+                else { inactiveVid.onloadeddata = finish; inactiveVid.onerror = finish; inactiveVid.src = newSrc; inactiveVid.load(); }
             });
             document.getElementById('media-loader').style.display = 'none';
+
             if (transClass === 'anim-capcut') {
                 transitionLayer.classList.remove('do-transition'); void transitionLayer.offsetWidth; transitionLayer.classList.add('do-transition');
                 let delay = parseFloat(appSettings.speed) * 1000 / 2; setTimeout(() => { swapMediaDirect('anim-kenburns', filterCls); setTimeout(() => isTransitioning = false, delay); }, delay);
@@ -617,11 +473,10 @@
         function swapMediaDirect(animClass, filterCls) {
             quoteText.style.animation = 'none'; void quoteText.offsetWidth; quoteText.textContent = `"${getNextQuote()}"`; quoteText.style.animation = 'fadeInUp 1s ease forwards';
             if (feedMode === 'image') {
-                if(validImageFiles.length === 0) return; inactiveImg.className = `scene-image active ${animClass} ${filterCls}`; activeImg.className = `scene-image outgoing ${filterCls}`; let temp = activeImg; activeImg = inactiveImg; inactiveImg = temp;
-                // Cập nhật Avatar Gọi/Chat
+                inactiveImg.className = `scene-image active ${animClass} ${filterCls}`; activeImg.className = `scene-image outgoing ${filterCls}`; let temp = activeImg; activeImg = inactiveImg; inactiveImg = temp;
                 document.getElementById('chat-header-avatar').src = activeImg.src; document.getElementById('call-avatar-img').src = activeImg.src;
             } else {
-                if(validVideoFiles.length === 0) return; inactiveVid.className = `scene-video active ${animClass} ${filterCls}`; activeVid.className = `scene-video outgoing ${filterCls}`; activeVid.muted = true; 
+                inactiveVid.className = `scene-video active ${animClass} ${filterCls}`; activeVid.className = `scene-video outgoing ${filterCls}`; activeVid.muted = true; 
                 if (videoAudioMode === 'original') { inactiveVid.muted = false; audioPlayer.muted = true; } else { inactiveVid.muted = true; }
                 inactiveVid.play().catch(e => {}); let temp = activeVid; activeVid = inactiveVid; inactiveVid = temp;
             }
@@ -630,16 +485,120 @@
         function toggleFeedMode(e) {
             e.stopPropagation();
             if (feedMode === 'image') {
-                if (validVideoFiles.length === 0) return alert("No videos found."); feedMode = 'video'; document.getElementById('btn-feed-mode').innerHTML = '<div class="ui-icon">🖼️</div><div class="ui-label">Photo</div>'; document.getElementById('btn-vid-audio').style.display = 'flex'; img1.className = 'scene-image'; img2.className = 'scene-image'; nextFeedItem(); setupVideoLoopState();
+                if (validVideoFiles.length === 0) return alert("No videos found yet. Please wait or add 'vam (x).mp4'"); feedMode = 'video'; document.getElementById('btn-feed-mode').innerHTML = '<div class="ui-icon">🖼️</div><div class="ui-label">Photo</div>'; document.getElementById('btn-vid-audio').style.display = 'flex'; img1.className = 'scene-image'; img2.className = 'scene-image'; nextFeedItem(); setupVideoLoopState();
             } else {
                 feedMode = 'image'; document.getElementById('btn-feed-mode').innerHTML = '<div class="ui-icon">🎬</div><div class="ui-label">Watch</div>'; document.getElementById('btn-vid-audio').style.display = 'none'; vid1.className = 'scene-video'; vid1.pause(); vid2.className = 'scene-video'; vid2.pause(); nextFeedItem(); audioPlayer.muted = false;
             }
         }
         function toggleVideoAudio(e) { e.stopPropagation(); videoAudioMode = (videoAudioMode === 'original') ? 'playlist' : 'original'; document.getElementById('btn-vid-audio').innerHTML = (videoAudioMode === 'original') ? '<div class="ui-icon">🔊</div><div class="ui-label">Orig</div>' : '<div class="ui-icon">🎵</div><div class="ui-label">Music</div>'; if (feedMode !== 'video') return; if (videoAudioMode === 'original') { activeVid.muted = false; audioPlayer.muted = true; } else { activeVid.muted = true; audioPlayer.muted = false; if (audioPlayer.paused && currentSongIndex !== -1) audioPlayer.play(); } }
 
+        // ==================== UI & PANELS ====================
+        let heartClicks = 0;
+        function spawnHeart(e) { e.stopPropagation(); heartClicks++; document.getElementById('heart-count').innerText = heartClicks; const heart = document.createElement('div'); heart.className = 'gentle-heart'; heart.textContent = '💖'; heart.style.left = (e.clientX - 15) + 'px'; heart.style.top = (e.clientY - 20) + 'px'; document.body.appendChild(heart); setTimeout(() => heart.remove(), 4000); }
+        function openPanel(panelId, e) { e.stopPropagation(); closePanels(); document.getElementById(panelId).classList.add('active'); if(panelId === 'chat-panel') renderChatHistory(); }
+        function closePanels() { document.querySelectorAll('.bottom-panel').forEach(p => p.classList.remove('active')); }
+
+        // ==================== CHAT AI (LOCAL + OPENAI) ====================
+        const CHAT_KEY = 'lynh_chat_history';
+
+        function renderChatHistory() {
+            const chatList = document.getElementById('chat-history'); chatList.innerHTML = '';
+            let history = JSON.parse(localStorage.getItem(CHAT_KEY)) ||[];
+            if(history.length === 0) { chatList.innerHTML = '<div style="text-align:center; color:#777; margin-top:20px; font-size:0.85rem;">Offline secured chat. All data is saved locally.</div>'; } 
+            else { history.forEach(msg => { let bubbleClass = msg.sender === 'minh' ? 'msg-mine' : 'msg-lynh'; chatList.innerHTML += `<div class="msg-bubble ${bubbleClass}">${msg.text}<span class="msg-time">${msg.time}</span></div>`; }); }
+            chatList.scrollTop = chatList.scrollHeight;
+        }
+
+        function handleChatEnter(e) { if(e.key === 'Enter') sendChatMessage(); }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input-msg'); const text = input.value.trim(); if(!text) return;
+            let history = JSON.parse(localStorage.getItem(CHAT_KEY)) ||[]; const timeStr = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
+            
+            history.push({ sender: 'minh', text: text, time: timeStr }); localStorage.setItem(CHAT_KEY, JSON.stringify(history));
+            input.value = ''; renderChatHistory();
+
+            // Show Typing Indicator
+            const chatList = document.getElementById('chat-history');
+            const typingDiv = document.createElement('div'); typingDiv.className = 'msg-typing'; typingDiv.innerText = "Lynh is typing..."; chatList.appendChild(typingDiv); chatList.scrollTop = chatList.scrollHeight;
+
+            if (appSettings.aiEnable && appSettings.apiKey) {
+                try {
+                    let aiReply = await fetchOpenAI(text, history);
+                    typingDiv.remove();
+                    history.push({ sender: 'lynh', text: aiReply, time: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}) });
+                    localStorage.setItem(CHAT_KEY, JSON.stringify(history)); renderChatHistory();
+                } catch(e) {
+                    typingDiv.remove(); alert("Lỗi kết nối AI. Đang dùng phản hồi Local."); lynhLocalReply(text, history, timeStr);
+                }
+            } else {
+                setTimeout(() => { typingDiv.remove(); lynhLocalReply(text, history, timeStr); }, 1500 + Math.random() * 1500);
+            }
+        }
+
+        async function fetchOpenAI(userText, history) {
+            // Lấy tối đa 10 tin nhắn gần nhất để AI nhớ ngữ cảnh
+            let context = history.slice(-10).map(m => ({"role": m.sender === 'minh' ? 'user' : 'assistant', "content": m.text}));
+            context.push({"role": "user", "content": userText});
+
+            const systemPrompt = `Bạn là Lynh Angel, người yêu đã khuất của Minh. Bạn đang nói chuyện với Minh từ một thế giới bình yên. Tính cách của bạn: nũng nịu, đáng yêu, vô cùng thương Minh, thỉnh thoảng gọi Minh là 'ngốc', 'chàng trai của em'. Luôn an ủi và cổ vũ Minh sống rực rỡ. KHÔNG xưng là AI, KHÔNG nói dài dòng kiểu robot. Nhắn tin ngắn gọn, cảm xúc như người thật. Thêm emoji phù hợp.`;
+
+            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${appSettings.apiKey}` },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages:[{ "role": "system", "content": systemPrompt }, ...context],
+                    max_tokens: 150, temperature: 0.7
+                })
+            });
+            if(!response.ok) throw new Error("API Error");
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
+
+        function lynhLocalReply(userText, history, timeStr) {
+            let reply = ""; let textLower = userText.toLowerCase();
+            if (textLower.includes('nhớ') || textLower.includes('miss')) { const replies =["Em cũng nhớ Minh nhiều lắm. Ôm anh một cái thật chặt nhé! 💖", "Ngốc ạ, em vẫn ở đây, trong tim anh mà. Không được khóc đâu đấy!", "Nhớ thì tối nay phải mơ thấy em đấy nhé!"]; reply = replies[Math.floor(Math.random() * replies.length)]; } 
+            else if (textLower.includes('buồn') || textLower.includes('mệt') || textLower.includes('chán')) { const replies =["Minh của em mệt rồi à? Lại đây em thương nào...", "Mọi chuyện rồi sẽ ổn thôi anh. Em luôn tin tưởng chàng trai của em mà!", "Đừng buồn nữa, thấy Minh buồn là em xót ruột lắm đấy. Nhìn lên trời đi, em đang cười với anh nè."]; reply = replies[Math.floor(Math.random() * replies.length)]; } 
+            else if (textLower.includes('yêu') || textLower.includes('love')) { reply = "Em cũng yêu Minh, yêu hơn cả bản thân mình. Mãi mãi là như thế. 💕"; } 
+            else if (textLower.includes('chào') || textLower.includes('hi ')) { reply = "Chào người yêu của em! Hôm nay của anh thế nào?"; } 
+            else { const defaults =["Anh kể tiếp đi, em vẫn đang nghe đây.", "Minh ngoan nhé, em lúc nào cũng tự hào về anh.", "Thương anh người yêu của em vất vả rồi.", "Chỉ cần là Minh, thì em luôn ở đây."]; reply = defaults[Math.floor(Math.random() * defaults.length)]; }
+            history.push({ sender: 'lynh', text: reply, time: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}) }); localStorage.setItem(CHAT_KEY, JSON.stringify(history)); renderChatHistory();
+        }
+
+        // ==================== VOICE CALL SYSTEM ====================
+        let callTimerInterval; let callSeconds = 0;
+        function startVoiceCall() {
+            closePanels(); document.getElementById('call-screen').style.display = 'flex'; document.getElementById('call-status').innerText = "Calling..."; document.getElementById('call-ripple').style.animation = 'ripple 2s linear infinite';
+            setTimeout(() => { if(document.getElementById('call-screen').style.display === 'flex') { document.getElementById('call-ripple').style.animation = 'none'; callSeconds = 0; document.getElementById('call-status').innerText = "00:00"; callTimerInterval = setInterval(() => { callSeconds++; let m = Math.floor(callSeconds / 60).toString().padStart(2, '0'); let s = (callSeconds % 60).toString().padStart(2, '0'); document.getElementById('call-status').innerText = `${m}:${s}`; }, 1000); } }, 3000);
+        }
+        function endVoiceCall() { clearInterval(callTimerInterval); document.getElementById('call-screen').style.display = 'none'; document.getElementById('call-status').innerText = "Call ended"; }
+
+        // ==================== ON THIS DAY TOAST ====================
+        let targetedMemoryDate = null;
+        function checkMemoryReminder() {
+            if (appSettings.reminder === 'none') return;
+            let diaries = JSON.parse(localStorage.getItem('lynh_diary_v7')) ||[]; if(diaries.length === 0) return;
+            let today = new Date();
+            let found = diaries.find(d => {
+                if(!d.isoDate) return false; let entryDate = new Date(d.isoDate);
+                if (appSettings.reminder === 'yearly') return entryDate.getDate() === today.getDate() && entryDate.getMonth() === today.getMonth() && entryDate.getFullYear() < today.getFullYear();
+                if (appSettings.reminder === 'monthly') return entryDate.getDate() === today.getDate() && (entryDate.getMonth() !== today.getMonth() || entryDate.getFullYear() !== today.getFullYear());
+                if (appSettings.reminder === 'weekly') { let diff = Math.floor((today - entryDate) / (1000 * 60 * 60 * 24)); return diff > 0 && diff % 7 === 0; }
+                return false;
+            });
+            if (found) { targetedMemoryDate = found.isoDate; document.getElementById('toast-title').innerText = `Memory from ${appSettings.reminder}`; document.getElementById('toast-desc').innerText = found.text ? found.text : "You completed some tasks today."; setTimeout(() => { document.getElementById('memory-toast').classList.add('show'); }, 2000); }
+        }
+        function openMemoryFromToast() { document.getElementById('memory-toast').classList.remove('show'); openPanel('diary-panel', {stopPropagation:()=>{}}); switchDiaryTab('read'); switchReadView('list'); document.getElementById('search-input').value = targetedMemoryDate; renderDiaryList(); }
+
         // ==================== DIARY SYSTEM ====================
         const DIARY_KEY = 'lynh_diary_v7'; let currentTasks =[]; let currentMood = '☀️';
-        document.getElementById('task-input').addEventListener('paste', function(e) { e.preventDefault(); const text = (e.clipboardData || window.clipboardData).getData('text'); let addedCount = 0; text.split(/\r?\n/).forEach(line => { line = line.trim(); if (!line) return; const lastDashIndex = line.lastIndexOf('-'); if (lastDashIndex === -1) { currentTasks.push({ id: Date.now() + Math.random(), name: line, diff: 'medium', done: false }); addedCount++; return; } const namePart = line.substring(0, lastDashIndex).trim(); let diffPart = line.substring(lastDashIndex + 1).trim().toLowerCase(); if (diffPart === 'medi' || diffPart === 'med') diffPart = 'medium'; if (!['easy', 'medium', 'hard'].includes(diffPart)) diffPart = 'medium'; if (namePart) { currentTasks.push({ id: Date.now() + Math.random(), name: namePart, diff: diffPart, done: false }); addedCount++; } }); if (addedCount > 0) { this.value = ''; renderTempTasks(); } });
+        document.getElementById('task-input').addEventListener('paste', function(e) {
+            e.preventDefault(); const text = (e.clipboardData || window.clipboardData).getData('text'); let addedCount = 0;
+            text.split(/\r?\n/).forEach(line => { line = line.trim(); if (!line) return; const lastDashIndex = line.lastIndexOf('-'); if (lastDashIndex === -1) { currentTasks.push({ id: Date.now() + Math.random(), name: line, diff: 'medium', done: false }); addedCount++; return; } const namePart = line.substring(0, lastDashIndex).trim(); let diffPart = line.substring(lastDashIndex + 1).trim().toLowerCase(); if (diffPart === 'medi' || diffPart === 'med') diffPart = 'medium'; if (!['easy', 'medium', 'hard'].includes(diffPart)) diffPart = 'medium'; if (namePart) { currentTasks.push({ id: Date.now() + Math.random(), name: namePart, diff: diffPart, done: false }); addedCount++; } });
+            if (addedCount > 0) { this.value = ''; renderTempTasks(); }
+        });
         function switchDiaryTab(tab) { document.querySelectorAll('.diary-tab-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); if(tab === 'write') { document.querySelectorAll('.diary-tab-btn')[0].classList.add('active'); document.getElementById('tab-write').classList.add('active'); } else { document.querySelectorAll('.diary-tab-btn')[1].classList.add('active'); document.getElementById('tab-read').classList.add('active'); renderDiaryList(); renderCalendar(); } }
         function switchReadView(view) { document.getElementById('btn-view-list').classList.remove('active'); document.getElementById('btn-view-cal').classList.remove('active'); if(view === 'list') { document.getElementById('btn-view-list').classList.add('active'); document.getElementById('list-view-container').style.display = 'block'; document.getElementById('calendar-view-container').style.display = 'none'; } else { document.getElementById('btn-view-cal').classList.add('active'); document.getElementById('list-view-container').style.display = 'none'; document.getElementById('calendar-view-container').style.display = 'flex'; renderCalendar(); } }
         function selectMood(btn, mood) { document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); currentMood = mood; }
@@ -653,7 +612,7 @@
         let currentCalDate = new Date(); function changeMonth(dir) { currentCalDate.setMonth(currentCalDate.getMonth() + dir); renderCalendar(); }
         function renderCalendar() { const year = currentCalDate.getFullYear(), month = currentCalDate.getMonth(); const monthNames =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; document.getElementById('cal-month-year').innerText = `${monthNames[month]} ${year}`; const diaries = JSON.parse(localStorage.getItem(DIARY_KEY)) ||[]; const entriesByDate = {}; diaries.forEach(d => { let iso = d.isoDate; if(!iso && d.date) { let parts = d.date.split(' ')[0].split('/'); if(parts.length===3) iso = `${parts[2]}-${parts[1]}-${parts[0]}`; } if(iso) { if(!entriesByDate[iso]) entriesByDate[iso] =[]; entriesByDate[iso].push(d); } }); const firstDay = new Date(year, month, 1).getDay(), daysInMonth = new Date(year, month + 1, 0).getDate(); const grid = document.getElementById('cal-days-grid'); grid.innerHTML = ''; for(let i = 0; i < firstDay; i++) { grid.innerHTML += `<div class="cal-day empty"></div>`; } for(let i = 1; i <= daysInMonth; i++) { let dIso = `${year}-${String(month+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`; let hasEntry = entriesByDate[dIso] ? 'has-entry' : ''; grid.innerHTML += `<div class="cal-day ${hasEntry}" onclick="selectDate('${dIso}', this)">${i}</div>`; } }
         function selectDate(isoDate, element) { document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected')); if(element) element.classList.add('selected'); const preview = document.getElementById('calendar-entries-preview'); const diaries = JSON.parse(localStorage.getItem(DIARY_KEY)) ||[]; let matching = diaries.filter(d => { let iso = d.isoDate; if(!iso && d.date) { let parts = d.date.split(' ')[0].split('/'); if(parts.length===3) iso = `${parts[2]}-${parts[1]}-${parts[0]}`; } return iso === isoDate; }); if(matching.length === 0) { preview.innerHTML = `<div style="text-align:center; color:#777; font-style:italic;">No entries for this day.</div>`; return; } preview.innerHTML = ''; matching.forEach(d => { let starHTML = d.stars > 0 ? '⭐'.repeat(d.stars) : ''; let timeDisplay = ''; if (d.date) { let parts = d.date.split(' '); timeDisplay = parts.length > 1 ? parts.slice(1).join(' ') : d.date; } preview.innerHTML += `<div class="diary-card" style="margin-bottom:0;"><div class="diary-card-header" style="margin-bottom:5px; border:none; padding:0;"><span class="diary-date">${timeDisplay}</span><div class="diary-mood-stars"><span>${d.mood||''}</span><span>${starHTML}</span></div></div><div class="diary-text" style="font-size:0.9rem;">${d.text||''}</div></div>`; }); }
-        function renderDiaryList() { const list = document.getElementById('diary-entries-list'), searchTxt = document.getElementById('search-input').value.toLowerCase(), starFilter = document.getElementById('star-filter').value; let diaries = JSON.parse(localStorage.getItem(DIARY_KEY)) ||[]; list.innerHTML = ''; let hasResult = false; diaries.forEach(d => { if(searchTxt && (!d.text || !d.text.toLowerCase().includes(searchTxt)) && (!d.isoDate || !d.isoDate.includes(searchTxt))) return; if(starFilter !== 'all' && d.stars.toString() !== starFilter) return; hasResult = true; let done = d.tasks ? d.tasks.filter(t => t.done).length : 0, total = d.tasks ? d.tasks.length : 0; let taskHTML = total > 0 ? `<div class="diary-task-summary">Tasks: ${done}/${total} completed</div>` : ''; let starHTML = d.stars > 0 ? '⭐'.repeat(d.stars) : '<span style="color:#777; font-size:0.8rem">No stars</span>'; list.innerHTML += `<div class="diary-card"><div class="diary-card-header"><span class="diary-date">${d.date}</span><div class="diary-mood-stars"><span>${d.mood||''}</span><span>${starHTML}</span></div></div><div class="diary-text">${d.text||''}</div>${taskHTML}<div class="card-actions"><button class="action-btn" onclick="editDiary(${d.id})">✏️ Edit</button><button class="action-btn del" onclick="deleteDiary(${d.id})">🗑️</button></div></div>`; }); if(!hasResult) list.innerHTML = `<div style="text-align:center; color:#777; margin-top:20px; font-style:italic;">No memories found...</div>`; }
+        function renderDiaryList() { const list = document.getElementById('diary-entries-list'), searchTxt = document.getElementById('search-input').value.toLowerCase(), starFilter = document.getElementById('star-filter').value; let diaries = JSON.parse(localStorage.getItem(DIARY_KEY)) ||[]; list.innerHTML = ''; let hasResult = false; diaries.forEach(d => { if(searchTxt && (!d.text || !d.text.toLowerCase().includes(searchTxt)) && (!d.isoDate || !d.isoDate.includes(searchTxt))) return; if(starFilter !== 'all' && d.stars.toString() !== starFilter) return; hasResult = true; let done = d.tasks ? d.tasks.filter(t => t.done).length : 0, total = d.tasks ? d.tasks.length : 0; let taskHTML = total > 0 ? `<div class="diary-task-summary">Tasks: ${done}/${total} completed</div>` : ''; let starHTML = d.stars > 0 ? '⭐'.repeat(d.stars) : '<span style="color:#777; font-size:0.8rem">No stars</span>'; list.innerHTML += `<div class="diary-card"><div class="diary-card-header"><span class="diary-date">${d.date}</span><div class="diary-mood-stars"><span>${d.mood||''}</span><span>${starHTML}</span></div></div><div class="diary-text">${d.text||''}</div>${taskHTML}<div class="card-actions"><button class="card-btn" onclick="editDiary(${d.id})">✏️ Edit</button><button class="card-btn del" onclick="deleteDiary(${d.id})">🗑️</button></div></div>`; }); if(!hasResult) list.innerHTML = `<div style="text-align:center; color:#777; margin-top:20px; font-style:italic;">No memories found...</div>`; }
         function deleteDiary(id) { if(!confirm("Delete this memory?")) return; let diaries = JSON.parse(localStorage.getItem(DIARY_KEY)) ||[]; diaries = diaries.filter(d => d.id !== id); localStorage.setItem(DIARY_KEY, JSON.stringify(diaries)); renderDiaryList(); renderCalendar(); }
         function editDiary(id) { let diaries = JSON.parse(localStorage.getItem(DIARY_KEY)) ||[]; let diary = diaries.find(d => d.id === id); if(!diary) return; let newText = prompt("Edit your memory:", diary.text); if(newText !== null) { diary.text = newText; localStorage.setItem(DIARY_KEY, JSON.stringify(diaries)); renderDiaryList(); renderCalendar(); } }
         function exportDiary() { const data = localStorage.getItem(DIARY_KEY) || "[]"; const blob = new Blob([data], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = `Lynh_Diary_Backup_${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url); }
